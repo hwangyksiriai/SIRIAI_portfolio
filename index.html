@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SIRIAI Portfolio</title>
+<style>
+  :root{
+    --bg: #0a0908;
+    --ink: #f2ede4;
+    --muted: #948e82;
+    --accent: #c98a3f;
+    --line: #262019;
+    --card: #15130f;
+    --display: -apple-system, "Pretendard", "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+    --body: -apple-system, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --mono: "SFMono-Regular", "Consolas", "Menlo", monospace;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-x:hidden; }
+
+  .deck{ scroll-snap-type:y proximity; overflow-y:auto; height:100vh; scroll-behavior:smooth; }
+  .page{
+    scroll-snap-align:start; min-height:100vh; position:relative;
+    padding:56px 64px 90px; display:flex; flex-direction:column;
+    border-bottom:1px solid var(--line);
+  }
+  @media (max-width:720px){ .page{ padding:32px 20px 84px; } }
+
+  .hud{
+    position:fixed; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center;
+    gap:10px; padding:16px 0 20px; pointer-events:none; z-index:5;
+  }
+  .hud-pill{
+    font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--muted);
+    background:rgba(21,19,15,.7); border:1px solid var(--line); padding:7px 14px; border-radius:999px;
+    backdrop-filter:blur(6px); font-variant-numeric:tabular-nums;
+  }
+
+  .counter{
+    position:absolute; top:56px; left:64px; font-family:var(--mono); font-size:11px;
+    letter-spacing:.1em; color:var(--muted); text-transform:uppercase;
+  }
+  @media (max-width:720px){ .counter{ top:28px; left:20px; } }
+  .counter b{ color:var(--ink); }
+
+  .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
+  h1.disp{ font-family:var(--display); font-weight:700; letter-spacing:-.01em; line-height:1.08; margin:0; text-wrap:balance; }
+  p.lead{ font-size:15px; line-height:1.7; color:var(--muted); max-width:38ch; margin:16px 0 0; }
+
+  /* Cover */
+  .cover{ justify-content:center; align-items:flex-start; }
+  .cover h1.disp{ font-size:clamp(40px,6vw,72px); }
+  .cover .jp{ font-family:var(--body); font-weight:400; color:var(--muted); font-size:20px; margin-top:8px; }
+  .cover-copy{ margin-top:40px; max-width:44ch; }
+  .cover-copy p{ font-size:16px; line-height:1.75; color:var(--ink); margin:0 0 8px; }
+  .cover-copy p.sub{ color:var(--muted); font-size:14px; margin-top:14px; }
+  .cover-still{
+    margin-top:auto; width:100%; aspect-ratio:21/8; border-radius:2px; overflow:hidden; position:relative;
+    background:radial-gradient(120% 140% at 20% 20%, rgba(201,138,63,.28), transparent 55%), linear-gradient(100deg,#1b1712 0%,#0d0b09 45%,#221a10 100%);
+  }
+  .cover-still img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+  /* Values */
+  .values-grid{ margin-top:auto; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media (max-width:720px){ .values-grid{ grid-template-columns:1fr; } }
+  .value-card .still{ width:100%; aspect-ratio:16/10; border-radius:2px; margin-bottom:16px; }
+  .value-card h3{ font-family:var(--display); font-weight:600; font-size:16px; margin:0 0 8px; letter-spacing:0; }
+  .value-card p{ font-size:13.5px; line-height:1.6; color:var(--muted); margin:0; }
+
+  /* Segments index */
+  .seg-grid{ margin-top:auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  @media (max-width:720px){ .seg-grid{ grid-template-columns:repeat(2,1fr); } }
+  .seg-cell{ background:var(--bg); padding:26px 22px; display:flex; flex-direction:column; gap:14px; transition:background .15s ease; cursor:pointer; text-decoration:none; }
+  .seg-cell:hover{ background:var(--card); }
+  .seg-cell svg{ width:24px; height:24px; stroke:var(--ink); }
+  .seg-cell .name{ font-family:var(--display); font-weight:600; font-size:13px; letter-spacing:0; color:var(--ink); }
+  .seg-cell .count{ font-family:var(--mono); font-size:10.5px; color:var(--muted); letter-spacing:.04em; }
+  .seg-cell.add{ align-items:center; justify-content:center; text-align:center; color:var(--muted); }
+  .seg-cell.add:hover{ color:var(--accent); }
+  .seg-cell.add .plus{ font-family:var(--display); font-size:20px; font-weight:600; }
+  .seg-cell.add .name{ font-weight:600; font-size:11.5px; color:inherit; }
+
+  /* Category pages */
+  .cat-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  .cat-head h1.disp{ font-size:clamp(26px,3.5vw,38px); }
+  .cat-tag{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--muted); border:1px solid var(--line); padding:6px 12px; border-radius:999px; white-space:nowrap; }
+
+  .clip-grid{ margin-top:32px; display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:64px; gap:14px; flex:1; }
+  @media (max-width:900px){ .clip-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; } }
+
+  .clip{ position:relative; border-radius:2px; overflow:hidden; background:var(--card); border:1px solid var(--line); }
+  .clip .fill{ position:absolute; inset:0; }
+  .clip img.fill{ width:100%; height:100%; object-fit:cover; }
+  .clip .brand{ position:absolute; top:10px; left:12px; font-family:var(--display); font-weight:600; font-size:12.5px; letter-spacing:0; color:var(--ink); text-shadow:0 2px 10px rgba(0,0,0,.5); z-index:2; }
+  .clip .fmt{ position:absolute; top:11px; right:12px; font-family:var(--mono); font-size:9.5px; letter-spacing:.08em; color:rgba(242,237,228,.65); text-transform:uppercase; z-index:2; }
+
+  .clip.span-2c{ grid-column:span 2; }
+  .clip.span-3c{ grid-column:span 3; }
+  .clip.span-4c{ grid-column:span 4; }
+  .clip.span-2r{ grid-row:span 2; }
+  .clip.span-3r{ grid-row:span 3; }
+  @media (max-width:900px){ .clip.span-2c,.clip.span-3c,.clip.span-4c{ grid-column:span 2; } }
+
+  .clip.slot{ background:transparent; border:1px dashed var(--line); display:flex; align-items:center; justify-content:center; }
+  .clip.slot span{ font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.04em; text-align:center; padding:0 10px; }
+
+  .cat-foot{ margin-top:18px; font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.03em; }
+
+  /* Closing */
+  .closing{ justify-content:center; align-items:flex-start; }
+  .closing h1.disp{ font-size:clamp(28px,4vw,44px); }
+  .closing .lead{ max-width:40ch; }
+  .closing-links{ margin-top:32px; display:flex; flex-direction:column; gap:8px; }
+  .closing-links a{ color:var(--ink); font-size:15px; text-decoration:none; border-bottom:1px solid var(--line); width:fit-content; padding-bottom:2px; }
+  .closing-links a:hover{ border-color:var(--accent); color:var(--accent); }
+  .closing-still{ margin-top:auto; width:100%; aspect-ratio:21/7; border-radius:2px; background:linear-gradient(120deg,#171310 0%,#0a0908 60%,#241a0f 100%); }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- 01 COVER -->
+  <section class="page cover">
+    <div class="counter"><b>01</b> / 13 — COVER</div>
+    <h1 class="disp">Siriai</h1>
+    <div class="jp">しりあい</div>
+    <div class="cover-copy">
+      <p>새로움을 설계하는 프라이빗 인플루언서 풀 — 그것이 SIRIAI의 방식입니다.</p>
+    </div>
+    <div class="cover-still"><img class="fill" src="media/cover.jpg" onerror="this.remove()" alt="" /></div>
+  </section>
+
+  <!-- 02 VALUES -->
+  <section class="page">
+    <div class="counter"><b>02</b> / 13 — WHY SIRIAI</div>
+    <p class="eyebrow">Curating Creators, Elevating Brands</p>
+    <h1 class="disp" style="font-size:clamp(22px,3vw,30px)">브랜드의 결을 읽고,<br>가장 근접한 크리에이터를 붙입니다.</h1>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="still" style="background:linear-gradient(135deg,#1a1712,#0d0b09)"></div>
+        <h3>Mood-Centric Curation</h3>
+        <p>브랜드에 딱 맞는 크리에이터를 선별해, 브랜드의 가치를 더 높여드립니다.</p>
+      </div>
+      <div class="value-card">
+        <div class="still" style="background:linear-gradient(135deg,#241d10,#0d0b09)"></div>
+        <h3>AI-Driven Discovery</h3>
+        <p>AI 시스템을 통해 신규 인플루언서를 지속적으로 발굴합니다.</p>
+      </div>
+      <div class="value-card">
+        <div class="still" style="background:linear-gradient(135deg,#171512,#0d0b09)"></div>
+        <h3>Premium Content Quality</h3>
+        <p>합리적 고효율 · 높은 영상 퀄리티로 캠페인마다 중복 없는 풀을 설계합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 SEGMENTS -->
+  <section class="page">
+    <div class="counter"><b>03</b> / 13 — INDEX</div>
+    <p class="eyebrow">Our Core Campaign Segments</p>
+    <h1 class="disp" style="font-size:clamp(22px,3vw,28px)">9개 카테고리, 국내·해외 통합</h1>
+    <p class="lead">지역이 아니라 우리가 잘하는 카테고리 기준으로 정리했습니다. 각 항목을 클릭하면 대표 사례로 이동합니다.</p>
+    <div class="seg-grid">
+      <a class="seg-cell" href="#cat-beauty">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3c3 4 6 7.6 6 11.2A6 6 0 1 1 6 14.2C6 10.6 9 7 12 3Z"/></svg>
+        <div class="name">Beauty</div><div class="count">04 · 대표 5건</div>
+      </a>
+      <a class="seg-cell" href="#cat-fashion">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 4a2 2 0 1 1 2 2c-.4.8-1.1 1.3-2 1.3s-1.6-.5-2-1.3a2 2 0 1 1 2-2Z"/><path d="M12 7 3 11l2 2 2-1v8h10v-8l2 1 2-2Z"/></svg>
+        <div class="name">Fashion</div><div class="count">05 · 대표 3건</div>
+      </a>
+      <a class="seg-cell" href="#cat-travel">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 12h18M3 12l5-5M3 12l5 5M21 12l-5-5M21 12l-5 5"/></svg>
+        <div class="name">Travel &amp; Tourism</div><div class="count">06</div>
+      </a>
+      <a class="seg-cell" href="#cat-fnb">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M6 3v7a3 3 0 0 0 3 3v8M9 3v6M12 3v6M17 3c-2 1-2 4-2 6s.6 3 2 3v9"/></svg>
+        <div class="name">F&amp;B</div><div class="count">07</div>
+      </a>
+      <a class="seg-cell" href="#cat-artist">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 10v4h4l5 5V5L7 10H3Z"/><path d="M16 8a5 5 0 0 1 0 8"/></svg>
+        <div class="name">Artist Promotion</div><div class="count">08</div>
+      </a>
+      <a class="seg-cell" href="#cat-celebrity">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M15 12a4 4 0 1 0-4-4M8 21v-2a5 5 0 0 1 5-5h1M18 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="3.2"/></svg>
+        <div class="name">Celebrity Promotion</div><div class="count">09 · NEW</div>
+      </a>
+      <a class="seg-cell" href="#cat-health">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20.8 7.6c0 5-4.4 8-8.8 11.4C7.6 15.6 3.2 12.6 3.2 7.6a4.4 4.4 0 0 1 8-2.6 4.4 4.4 0 0 1 8 0 4.4 4.4 0 0 1 1.6 2.6Z"/></svg>
+        <div class="name">Health &amp; Wellness</div><div class="count">10 · 건기식</div>
+      </a>
+      <a class="seg-cell" href="#cat-medical">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3v6M9 6h6"/><rect x="4" y="9" width="16" height="12" rx="1.5"/><path d="M9 14h6M12 11v6"/></svg>
+        <div class="name">Medical</div><div class="count">11 · NEW</div>
+      </a>
+      <a class="seg-cell" href="#cat-popup">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 9l1-5h14l1 5M4 9v10h16V9M4 9h16M9 19v-6h6v6"/></svg>
+        <div class="name">Popup Visit</div><div class="count">12 · NEW</div>
+      </a>
+      <div class="seg-cell add">
+        <div class="plus">+</div><div class="name">다음 카테고리</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 BEAUTY -->
+  <section class="page" id="cat-beauty">
+    <div class="counter"><b>04</b> / 13 — BEAUTY</div>
+    <div class="cat-head">
+      <h1 class="disp">Beauty</h1>
+      <div class="cat-tag">스킨케어 · 색조</div>
+    </div>
+    <p class="lead">피부 위에 스며드는 설득. 스킨케어·색조 전반의 신뢰를 만드는 콘텐츠.</p>
+    <div class="clip-grid">
+      <div class="clip span-2c span-2r"><img class="fill" src="media/beauty/forhz.jpg" onerror="this.remove()" alt=""/><div class="brand">forhz</div><div class="fmt">Reels</div></div>
+      <div class="clip span-2r"><img class="fill" src="media/beauty/nuricle.jpg" onerror="this.remove()" alt=""/><div class="brand">NURICLE</div><div class="fmt">Posts</div></div>
+      <div class="clip span-2c"><img class="fill" src="media/beauty/skim.jpg" onerror="this.remove()" alt=""/><div class="brand">SKIM</div><div class="fmt">Reels</div></div>
+      <div class="clip span-2c span-2r"><img class="fill" src="media/beauty/oddtype-01.jpg" onerror="this.remove()" alt=""/><div class="brand">ODDTYPE 01</div><div class="fmt">Reels</div></div>
+      <div class="clip"><img class="fill" src="media/beauty/oddtype-02.jpg" onerror="this.remove()" alt=""/><div class="brand">ODDTYPE 02</div><div class="fmt">Reels</div></div>
+      <div class="clip slot span-2c"><span>+ 대표 클립 슬롯</span></div>
+    </div>
+    <div class="cat-foot">media/beauty/ 폴더에 forhz.jpg, nuricle.jpg, skim.jpg, oddtype-01.jpg, oddtype-02.jpg 파일을 넣으면 자동으로 채워집니다.</div>
+  </section>
+
+  <!-- 05 FASHION -->
+  <section class="page" id="cat-fashion">
+    <div class="counter"><b>05</b> / 13 — FASHION</div>
+    <div class="cat-head">
+      <h1 class="disp">Fashion</h1>
+      <div class="cat-tag">패션 브랜드 · 크리에이터</div>
+    </div>
+    <p class="lead">패션·라이프스타일 크리에이터의 시선으로 완성하는 브랜드 무드.</p>
+    <div class="clip-grid">
+      <div class="clip span-3c span-2r"><img class="fill" src="media/fashion/innir.jpg" onerror="this.remove()" alt=""/><div class="brand">INNIR</div><div class="fmt">Posts</div></div>
+      <div class="clip span-3c"><img class="fill" src="media/fashion/bluesunset.jpg" onerror="this.remove()" alt=""/><div class="brand">BLUESUNSET</div><div class="fmt">Xiaohongshu</div></div>
+      <div class="clip span-2c span-2r"><img class="fill" src="media/fashion/greencontinue.jpg" onerror="this.remove()" alt=""/><div class="brand">GREENCONTINUE</div><div class="fmt">Reels</div></div>
+      <div class="clip slot span-4c"><span>+ 대표 클립 슬롯</span></div>
+    </div>
+    <div class="cat-foot">media/fashion/ 폴더에 innir.jpg, bluesunset.jpg, greencontinue.jpg 파일을 넣으면 자동으로 채워집니다.</div>
+  </section>
+
+  <!-- 06 TRAVEL -->
+  <section class="page" id="cat-travel">
+    <div class="counter"><b>06</b> / 13 — TRAVEL &amp; TOURISM</div>
+    <div class="cat-head">
+      <h1 class="disp">Travel &amp; Tourism</h1>
+      <div class="cat-tag">대표 클립 필요</div>
+    </div>
+    <p class="lead">여행이 콘텐츠가 되는 순간을 설계합니다.</p>
+    <div class="clip-grid">
+      <div class="clip slot span-3c span-3r"><span>+ 대표 클립 1</span></div>
+      <div class="clip slot span-3c span-2r"><span>+ 대표 클립 2</span></div>
+      <div class="clip slot span-3c"><span>+ 대표 클립 3</span></div>
+    </div>
+    <div class="cat-foot">media/travel-tourism/ 에 대표 브랜드 이미지를 넣고 이 파일의 media/travel-tourism/... 경로를 채워주세요.</div>
+  </section>
+
+  <!-- 07 F&B -->
+  <section class="page" id="cat-fnb">
+    <div class="counter"><b>07</b> / 13 — F&amp;B</div>
+    <div class="cat-head">
+      <h1 class="disp">F&amp;B</h1>
+      <div class="cat-tag">대표 클립 필요</div>
+    </div>
+    <p class="lead">한 입의 경험을 확산시키는 미식 콘텐츠.</p>
+    <div class="clip-grid">
+      <div class="clip slot span-2c span-3r"><span>+ 대표 클립 1</span></div>
+      <div class="clip slot span-2c span-3r"><span>+ 대표 클립 2</span></div>
+      <div class="clip slot span-2c span-3r"><span>+ 대표 클립 3</span></div>
+    </div>
+    <div class="cat-foot">media/fnb/ 에 대표 브랜드 이미지를 넣어주세요.</div>
+  </section>
+
+  <!-- 08 ARTIST PROMOTION -->
+  <section class="page" id="cat-artist">
+    <div class="counter"><b>08</b> / 13 — ARTIST PROMOTION</div>
+    <div class="cat-head">
+      <h1 class="disp">Artist Promotion</h1>
+      <div class="cat-tag">해외 아티스트 협업</div>
+    </div>
+    <p class="lead">아티스트와 브랜드가 함께 만드는 화제성.</p>
+    <div class="clip-grid">
+      <div class="clip slot span-2c span-3r"><span>+ 대표 클립 1</span></div>
+      <div class="clip slot span-2c span-3r"><span>+ 대표 클립 2</span></div>
+      <div class="clip slot span-2c span-3r"><span>+ 대표 클립 3</span></div>
+    </div>
+    <div class="cat-foot">media/artist-promotion/ 에 대표 브랜드 이미지를 넣어주세요.</div>
+  </section>
+
+  <!-- 09 CELEBRITY PROMOTION -->
+  <section class="page" id="cat-celebrity">
+    <div class="counter"><b>09</b> / 13 — CELEBRITY PROMOTION</div>
+    <div class="cat-head">
+      <h1 class="disp">Celebrity Promotion</h1>
+      <div class="cat-tag">NEW · 틈결 연예인 섭외</div>
+    </div>
+    <p class="lead">연예인 섭외로 화제성과 신뢰도를 동시에 만드는 캠페인.</p>
+    <div class="clip-grid">
+      <div class="clip span-3c span-3r"><img class="fill" src="media/celebrity-promotion/teumgyeol.jpg" onerror="this.remove()" alt=""/><div class="brand">틈결</div><div class="fmt">Celebrity</div></div>
+      <div class="clip slot span-3c span-3r"><span>+ 대표 클립 2</span></div>
+    </div>
+    <div class="cat-foot">media/celebrity-promotion/teumgyeol.jpg 파일을 넣으면 자동으로 채워집니다.</div>
+  </section>
+
+  <!-- 10 HEALTH & WELLNESS -->
+  <section class="page" id="cat-health">
+    <div class="counter"><b>10</b> / 13 — HEALTH &amp; WELLNESS</div>
+    <div class="cat-head">
+      <h1 class="disp">Health &amp; Wellness</h1>
+      <div class="cat-tag">건기식 중심</div>
+    </div>
+    <p class="lead">건강기능식품 등 일상 루틴 속에 스며드는 웰니스 메시지.</p>
+    <div class="clip-grid">
+      <div class="clip slot span-3c span-3r"><span>+ 대표 클립 1</span></div>
+      <div class="clip slot span-3c span-3r"><span>+ 대표 클립 2</span></div>
+    </div>
+    <div class="cat-foot">media/health-wellness/ 에 건기식 브랜드 이미지를 넣어주세요. (병원·시술은 11p Medical로 분리)</div>
+  </section>
+
+  <!-- 11 MEDICAL -->
+  <section class="page" id="cat-medical">
+    <div class="counter"><b>11</b> / 13 — MEDICAL</div>
+    <div class="cat-head">
+      <h1 class="disp">Medical</h1>
+      <div class="cat-tag">NEW · ID Hospital</div>
+    </div>
+    <p class="lead">병원·시술 기반의 신뢰도 높은 메디컬 캠페인.</p>
+    <div class="clip-grid">
+      <div class="clip span-3c span-3r"><img class="fill" src="media/medical/id-hospital.jpg" onerror="this.remove()" alt=""/><div class="brand">ID Hospital</div><div class="fmt">Reels</div></div>
+      <div class="clip slot span-3c span-3r"><span>+ 대표 클립 2</span></div>
+    </div>
+    <div class="cat-foot">media/medical/id-hospital.jpg 파일을 넣으면 자동으로 채워집니다.</div>
+  </section>
+
+  <!-- 12 POPUP VISIT -->
+  <section class="page" id="cat-popup">
+    <div class="counter"><b>12</b> / 13 — POPUP VISIT</div>
+    <div class="cat-head">
+      <h1 class="disp">Popup Visit</h1>
+      <div class="cat-tag">NEW · 틈결 @ 성수 아뜰리에</div>
+    </div>
+    <p class="lead">오프라인 팝업·매장 방문을 콘텐츠로 확장하는 방문형 캠페인.</p>
+    <div class="clip-grid">
+      <div class="clip span-2c span-3r"><img class="fill" src="media/popup-visit/teumgyeol.jpg" onerror="this.remove()" alt=""/><div class="brand">틈결</div><div class="fmt">Visit · Reels</div></div>
+      <div class="clip span-2c span-3r"><img class="fill" src="media/popup-visit/teumgyeol-atelier.jpg" onerror="this.remove()" alt=""/><div class="brand">틈결 · 성수 아뜰리에</div><div class="fmt">Space</div></div>
+      <div class="clip span-2c span-3r"><img class="fill" src="media/popup-visit/atelier.jpg" onerror="this.remove()" alt=""/><div class="brand">Atelier</div><div class="fmt">Visit · Reels</div></div>
+    </div>
+    <div class="cat-foot">media/popup-visit/ 에 teumgyeol.jpg, teumgyeol-atelier.jpg, atelier.jpg 파일을 넣으면 자동으로 채워집니다.</div>
+  </section>
+
+  <!-- 13 CLOSING -->
+  <section class="page closing">
+    <div class="counter"><b>13</b> / 13 — CONTACT</div>
+    <p class="eyebrow">Let's Work Together</p>
+    <h1 class="disp">브랜드의 다음 캠페인,<br>SIRIAI와 함께.</h1>
+    <p class="lead">카테고리를 넘나드는 크리에이터 풀로, 브랜드 결에 맞는 캠페인을 설계합니다.</p>
+    <div class="closing-links">
+      <a href="mailto:hwangyksiriai@gmail.com">hwangyksiriai@gmail.com</a>
+      <a href="#">Instagram — @siriai.official</a>
+    </div>
+    <div class="closing-still"></div>
+  </section>
+
+</div>
+
+<div class="hud">
+  <div class="hud-pill" id="hud-counter">01 / 13</div>
+  <div class="hud-pill">↑ ↓ ARROW KEYS</div>
+</div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const pages = Array.from(document.querySelectorAll('.page'));
+  const hud = document.getElementById('hud-counter');
+
+  function currentIndex(){
+    const y = deck.scrollTop;
+    let idx = 0, best = Infinity;
+    pages.forEach((p,i)=>{
+      const d = Math.abs(p.offsetTop - y);
+      if(d < best){ best = d; idx = i; }
+    });
+    return idx;
+  }
+
+  deck.addEventListener('scroll', ()=>{
+    const i = currentIndex();
+    hud.textContent = String(i+1).padStart(2,'0') + ' / 13';
+  }, { passive:true });
+
+  window.addEventListener('keydown', (e)=>{
+    if(!['ArrowDown','ArrowUp'].includes(e.key)) return;
+    e.preventDefault();
+    const i = currentIndex();
+    const next = e.key === 'ArrowDown' ? Math.min(i+1, pages.length-1) : Math.max(i-1, 0);
+    pages[next].scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+</script>
+</body>
+</html>
