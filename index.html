@@ -242,14 +242,13 @@
       <div class="cat-tag">NEW · 생활 · 위생</div>
     </div>
     <div class="clip-grid">
-      <div class="reel-strip" id="reel-living">
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video></div>
+      <div class="reel-strip">
+        <div class="clip"><video class="fill" src="media/living-personal-care/bsh.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" src="media/living-personal-care/diffuser-1.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" src="media/living-personal-care/diffuser-2.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" src="media/living-personal-care/bodywash.mp4" autoplay muted loop playsinline></video></div>
       </div>
     </div>
-    <div class="cat-foot">8개 영상이 4개씩 두 세트로 순환 재생됩니다 (가장 긴 영상 기준으로 세트 교체).</div>
   </section>
 
   <!-- 06 FASHION -->
@@ -420,21 +419,9 @@
   // Rotating reel sets: shows N videos at once; when the slowest one in the
   // current set finishes, swaps all slots to the next set. Shorter clips in
   // the meantime just keep looping so nothing ever sits frozen.
-  const REEL_ROTATIONS = [
-    {
-      container: 'reel-living',
-      sources: [
-        'media/living-personal-care/bsh.mp4',
-        'media/living-personal-care/diffuser-1.mp4',
-        'media/living-personal-care/diffuser-2.mp4',
-        'media/living-personal-care/bodywash.mp4',
-        'media/living-personal-care/footwash.mp4',
-        'media/living-personal-care/handcream.mp4',
-        'media/living-personal-care/perfume.mp4',
-        'media/living-personal-care/noderup.mp4'
-      ]
-    }
-  ];
+  // Add entries here for any category with more clips than fit on screen at
+  // once — e.g. { container: 'reel-id', sources: [...8+ files] }.
+  const REEL_ROTATIONS = [];
 
   function setupReelRotation(containerId, sources){
     const container = document.getElementById(containerId);
