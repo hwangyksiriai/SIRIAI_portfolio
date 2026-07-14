@@ -82,6 +82,15 @@
   .cat-head h1.disp{ font-size:clamp(26px,3.5vw,38px); }
   .cat-tag{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--muted); border:1px solid var(--line); padding:6px 12px; border-radius:999px; white-space:nowrap; }
 
+  .region-toggle{ display:flex; gap:8px; }
+  .region-btn{
+    font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); background:transparent; border:1px solid var(--line); padding:7px 16px;
+    border-radius:999px; cursor:pointer; transition:color .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .region-btn:hover{ color:var(--ink); }
+  .region-btn.active{ color:var(--ink); border-color:var(--accent); background:rgba(201,138,63,.14); }
+
   .clip-grid{ margin-top:32px; display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:64px; gap:14px; flex:1; }
   @media (max-width:900px){ .clip-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; } }
 
@@ -206,6 +215,10 @@
   <section class="page" id="cat-beauty">
     <div class="cat-head">
       <h1 class="disp">Beauty</h1>
+      <div class="region-toggle" data-region-target="reel-beauty">
+        <button type="button" class="region-btn active" data-region="domestic">국내</button>
+        <button type="button" class="region-btn" data-region="abroad">해외</button>
+      </div>
     </div>
     <div class="clip-grid">
       <div class="reel-strip" id="reel-beauty">
@@ -215,7 +228,6 @@
         <div class="clip"><video class="fill" autoplay muted loop playsinline></video></div>
       </div>
     </div>
-    <div class="cat-foot">media/beauty/ 폴더에 파일을 추가하면 릴스가 늘어납니다.</div>
   </section>
 
   <!-- 05 LIVING & PERSONAL CARE -->
@@ -401,21 +413,7 @@
   // the meantime just keep looping so nothing ever sits frozen.
   // Add entries here for any category with more clips than fit on screen at
   // once — e.g. { container: 'reel-id', sources: [...8+ files] }.
-  const REEL_ROTATIONS = [
-    {
-      container: 'reel-beauty',
-      sources: [
-        'media/beauty/lee-jerin.mp4',
-        'media/beauty/jang-sohee.mp4',
-        'media/beauty/yoon-hyerin.mp4',
-        'media/beauty/hyeonmyeong-2.mp4',
-        'media/beauty/abroad-1.mp4',
-        'media/beauty/abroad-2.mp4',
-        'media/beauty/abroad-3.mp4',
-        'media/beauty/abroad-4.mp4'
-      ]
-    }
-  ];
+  const REEL_ROTATIONS = [];
 
   function setupReelRotation(containerId, sources){
     const container = document.getElementById(containerId);
@@ -459,6 +457,53 @@
   }
 
   REEL_ROTATIONS.forEach(cfg => setupReelRotation(cfg.container, cfg.sources));
+
+  // Region toggle: a badge pair (국내/해외) that swaps a reel-strip's videos
+  // to a different fixed set on click, instead of auto-rotating.
+  const REGION_SETS = {
+    'reel-beauty': {
+      domestic: [
+        'media/beauty/lee-jerin.mp4',
+        'media/beauty/jang-sohee.mp4',
+        'media/beauty/yoon-hyerin.mp4',
+        'media/beauty/hyeonmyeong-2.mp4'
+      ],
+      abroad: [
+        'media/beauty/abroad-1.mp4',
+        'media/beauty/abroad-2.mp4',
+        'media/beauty/abroad-3.mp4',
+        'media/beauty/abroad-4.mp4'
+      ]
+    }
+  };
+
+  function loadRegion(containerId, region){
+    const sets = REGION_SETS[containerId];
+    if(!sets) return;
+    const container = document.getElementById(containerId);
+    const videos = Array.from(container.querySelectorAll('video'));
+    const sources = sets[region] || [];
+    videos.forEach((v, i) => {
+      if(!sources[i]) return;
+      v.src = sources[i];
+      v.load();
+      v.play().catch(()=>{});
+    });
+  }
+
+  document.querySelectorAll('.region-toggle').forEach(toggle => {
+    const targetId = toggle.dataset.regionTarget;
+    const buttons = Array.from(toggle.querySelectorAll('.region-btn'));
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        loadRegion(targetId, btn.dataset.region);
+      });
+    });
+    const initial = toggle.querySelector('.region-btn.active') || buttons[0];
+    if(initial) loadRegion(targetId, initial.dataset.region);
+  });
 </script>
 </body>
 </html>
