@@ -95,8 +95,10 @@
   .reel-strip .clip{ aspect-ratio:9/16; }
   @media (max-width:900px){ .reel-strip{ grid-template-columns:repeat(2,1fr); } }
 
-  .travel-grid{ grid-column:1/-1; align-self:start; display:flex; flex-direction:column; gap:14px; }
+  .travel-grid{ grid-column:1/-1; align-self:start; display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .travel-col{ display:flex; flex-direction:column; gap:14px; }
   .clip.landscape{ width:100%; aspect-ratio:16/9; }
+  @media (max-width:900px){ .travel-grid{ grid-template-columns:1fr; } }
 
   .clip.span-2c{ grid-column:span 2; }
   .clip.span-3c{ grid-column:span 3; }
@@ -254,10 +256,14 @@
     </div>
     <div class="clip-grid">
       <div class="travel-grid">
-        <div class="clip landscape"><video class="fill" src="media/travel-tourism/oh-youngju.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip landscape"><video class="fill" src="media/travel-tourism/jongwoo-gallery.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip landscape"><video class="fill" src="media/travel-tourism/reichan.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip landscape"><video class="fill" src="media/travel-tourism/phatthararwee.mp4" autoplay muted loop playsinline></video></div>
+        <div class="travel-col">
+          <div class="clip landscape"><video class="fill" src="media/travel-tourism/oh-youngju.mp4" autoplay muted loop playsinline></video></div>
+          <div class="clip landscape"><video class="fill" src="media/travel-tourism/jongwoo-gallery.mp4" autoplay muted loop playsinline></video></div>
+        </div>
+        <div class="travel-col">
+          <div class="clip landscape"><video class="fill" src="media/travel-tourism/reichan.mp4" autoplay muted loop playsinline></video></div>
+          <div class="clip landscape"><video class="fill" src="media/travel-tourism/phatthararwee.mp4" autoplay muted loop playsinline></video></div>
+        </div>
       </div>
     </div>
     <div class="cat-foot">media/travel-tourism/ 에 대표 브랜드 이미지를 넣고 이 파일의 media/travel-tourism/... 경로를 채워주세요.</div>
