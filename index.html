@@ -23,10 +23,10 @@
   .deck{ scroll-snap-type:y proximity; overflow-y:auto; height:100vh; scroll-behavior:smooth; }
   .page{
     scroll-snap-align:start; min-height:100vh; position:relative;
-    padding:56px 64px 90px; display:flex; flex-direction:column;
+    padding:104px 64px 90px; display:flex; flex-direction:column;
     border-bottom:1px solid var(--line);
   }
-  @media (max-width:720px){ .page{ padding:32px 20px 84px; } }
+  @media (max-width:720px){ .page{ padding:76px 20px 84px; } }
 
   .hud{
     position:fixed; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center;
@@ -39,10 +39,10 @@
   }
 
   .counter{
-    position:absolute; top:56px; left:64px; font-family:var(--mono); font-size:11px;
+    position:absolute; top:40px; left:64px; font-family:var(--mono); font-size:11px;
     letter-spacing:.1em; color:var(--muted); text-transform:uppercase;
   }
-  @media (max-width:720px){ .counter{ top:28px; left:20px; } }
+  @media (max-width:720px){ .counter{ top:24px; left:20px; } }
   .counter b{ color:var(--ink); }
 
   .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
@@ -70,17 +70,14 @@
   .value-card p{ font-size:13.5px; line-height:1.6; color:var(--muted); margin:0; }
 
   /* Segments index */
-  .seg-grid{ margin-top:auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-  @media (max-width:720px){ .seg-grid{ grid-template-columns:repeat(2,1fr); } }
-  .seg-cell{ background:var(--bg); padding:26px 22px; display:flex; flex-direction:column; gap:14px; transition:background .15s ease; cursor:pointer; text-decoration:none; }
-  .seg-cell:hover{ background:var(--card); }
-  .seg-cell svg{ width:24px; height:24px; stroke:var(--ink); }
-  .seg-cell .name{ font-family:var(--display); font-weight:600; font-size:13px; letter-spacing:0; color:var(--ink); }
-  .seg-cell .count{ font-family:var(--mono); font-size:10.5px; color:var(--muted); letter-spacing:.04em; }
-  .seg-cell.add{ align-items:center; justify-content:center; text-align:center; color:var(--muted); }
-  .seg-cell.add:hover{ color:var(--accent); }
-  .seg-cell.add .plus{ font-family:var(--display); font-size:20px; font-weight:600; }
-  .seg-cell.add .name{ font-weight:600; font-size:11.5px; color:inherit; }
+  .seg-grid{ margin-top:auto; margin-left:auto; max-width:640px; width:100%; display:grid; grid-template-columns:repeat(3,1fr); gap:44px 36px; }
+  @media (max-width:900px){ .seg-grid{ max-width:100%; } }
+  @media (max-width:720px){ .seg-grid{ grid-template-columns:repeat(2,1fr); gap:32px 24px; } }
+  .seg-cell{ display:flex; flex-direction:column; align-items:center; gap:14px; text-decoration:none; cursor:pointer; }
+  .seg-cell svg{ width:28px; height:28px; stroke:var(--ink); transition:stroke .15s ease; }
+  .seg-cell .name{ font-family:var(--body); font-weight:500; font-size:14px; letter-spacing:0; color:var(--ink); text-align:center; transition:color .15s ease; }
+  .seg-cell:hover svg{ stroke:var(--accent); }
+  .seg-cell:hover .name{ color:var(--accent); }
 
   /* Category pages */
   .cat-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
@@ -160,53 +157,49 @@
   <!-- 03 SEGMENTS -->
   <section class="page">
     <div class="counter"><b>03</b> / 14 — INDEX</div>
-    <p class="eyebrow">Our Core Campaign Segments</p>
-    <h1 class="disp" style="font-size:clamp(22px,3vw,28px)">10개 카테고리, 국내·해외 통합</h1>
-    <p class="lead">지역이 아니라 우리가 잘하는 카테고리 기준으로 정리했습니다. 각 항목을 클릭하면 대표 사례로 이동합니다.</p>
+    <h1 class="disp" style="font-size:clamp(30px,4.4vw,44px)">Our Core<br>Campaign Segments</h1>
+    <p class="lead">SIRIAI는 다양한 카테고리의 캠페인을 폭넓게 수행하며,<br>브랜드별 니즈에 맞춘 인플루언서 협업을 설계합니다.</p>
     <div class="seg-grid">
       <a class="seg-cell" href="#cat-beauty">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3c3 4 6 7.6 6 11.2A6 6 0 1 1 6 14.2C6 10.6 9 7 12 3Z"/></svg>
-        <div class="name">Beauty</div><div class="count">04 · 대표 5건</div>
+        <div class="name">Beauty</div>
       </a>
       <a class="seg-cell" href="#cat-living">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M9 3h6M10 3v3h4V3M8 6h8l1 3H7l1-3Z"/><rect x="6" y="9" width="12" height="12" rx="2"/></svg>
-        <div class="name">Living &amp; Personal Care</div><div class="count">05 · NEW</div>
+        <div class="name">Living &amp; Personal Care</div>
       </a>
       <a class="seg-cell" href="#cat-fashion">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 4a2 2 0 1 1 2 2c-.4.8-1.1 1.3-2 1.3s-1.6-.5-2-1.3a2 2 0 1 1 2-2Z"/><path d="M12 7 3 11l2 2 2-1v8h10v-8l2 1 2-2Z"/></svg>
-        <div class="name">Fashion</div><div class="count">06 · 대표 3건</div>
+        <div class="name">Fashion</div>
       </a>
       <a class="seg-cell" href="#cat-travel">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 12h18M3 12l5-5M3 12l5 5M21 12l-5-5M21 12l-5 5"/></svg>
-        <div class="name">Travel &amp; Tourism</div><div class="count">07</div>
+        <div class="name">Travel &amp; Tourism</div>
       </a>
       <a class="seg-cell" href="#cat-fnb">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M6 3v7a3 3 0 0 0 3 3v8M9 3v6M12 3v6M17 3c-2 1-2 4-2 6s.6 3 2 3v9"/></svg>
-        <div class="name">F&amp;B</div><div class="count">08</div>
+        <div class="name">F&amp;B</div>
       </a>
       <a class="seg-cell" href="#cat-artist">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 10v4h4l5 5V5L7 10H3Z"/><path d="M16 8a5 5 0 0 1 0 8"/></svg>
-        <div class="name">Artist Promotion</div><div class="count">09</div>
+        <div class="name">Artist Promotion</div>
       </a>
       <a class="seg-cell" href="#cat-celebrity">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M15 12a4 4 0 1 0-4-4M8 21v-2a5 5 0 0 1 5-5h1M18 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="3.2"/></svg>
-        <div class="name">Celebrity Promotion</div><div class="count">10 · NEW</div>
+        <div class="name">Celebrity Promotion</div>
       </a>
       <a class="seg-cell" href="#cat-health">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20.8 7.6c0 5-4.4 8-8.8 11.4C7.6 15.6 3.2 12.6 3.2 7.6a4.4 4.4 0 0 1 8-2.6 4.4 4.4 0 0 1 8 0 4.4 4.4 0 0 1 1.6 2.6Z"/></svg>
-        <div class="name">Health &amp; Wellness</div><div class="count">11 · 건기식</div>
+        <div class="name">Health &amp; Wellness</div>
       </a>
       <a class="seg-cell" href="#cat-medical">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3v6M9 6h6"/><rect x="4" y="9" width="16" height="12" rx="1.5"/><path d="M9 14h6M12 11v6"/></svg>
-        <div class="name">Medical</div><div class="count">12 · NEW</div>
+        <div class="name">Medical</div>
       </a>
       <a class="seg-cell" href="#cat-popup">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 9l1-5h14l1 5M4 9v10h16V9M4 9h16M9 19v-6h6v6"/></svg>
-        <div class="name">Popup Visit</div><div class="count">13 · NEW</div>
+        <div class="name">Popup Visit</div>
       </a>
-      <div class="seg-cell add">
-        <div class="plus">+</div><div class="name">다음 카테고리</div>
-      </div>
     </div>
   </section>
 
