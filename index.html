@@ -50,12 +50,14 @@
   p.lead{ font-size:15px; line-height:1.7; color:var(--muted); max-width:38ch; margin:16px 0 0; }
 
   /* Cover */
-  .cover{ justify-content:center; align-items:flex-start; }
-  .cover h1.disp{ font-size:clamp(40px,6vw,72px); }
-  .cover .jp{ font-family:var(--body); font-weight:400; color:var(--muted); font-size:20px; margin-top:8px; }
-  .cover-copy{ margin-top:40px; max-width:44ch; }
-  .cover-copy p{ font-size:16px; line-height:1.75; color:var(--ink); margin:0 0 8px; }
-  .cover-copy p.sub{ color:var(--muted); font-size:14px; margin-top:14px; }
+  .cover-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:48px; flex-wrap:wrap; }
+  .cover-title{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  .cover-title h1.disp{ font-size:clamp(40px,6vw,72px); }
+  .cover-title .jp{ font-family:var(--body); font-weight:400; color:var(--muted); font-size:18px; }
+  .cover-copy{ max-width:34ch; padding-top:4px; }
+  .cover-copy p.primary{ font-size:15px; font-weight:600; line-height:1.6; color:var(--ink); margin:0 0 14px; }
+  .cover-copy p.secondary{ font-size:13px; line-height:1.75; color:var(--muted); margin:0; }
+  @media (max-width:720px){ .cover-copy{ max-width:100%; } }
   .cover-still{
     margin-top:auto; width:100%; aspect-ratio:21/8; border-radius:2px; overflow:hidden; position:relative;
     background:radial-gradient(120% 140% at 20% 20%, rgba(201,138,63,.28), transparent 55%), linear-gradient(100deg,#1b1712 0%,#0d0b09 45%,#221a10 100%);
@@ -65,7 +67,7 @@
   /* Values */
   .values-grid{ margin-top:auto; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
   @media (max-width:720px){ .values-grid{ grid-template-columns:1fr; } }
-  .value-card .still{ width:100%; aspect-ratio:16/10; border-radius:2px; margin-bottom:16px; }
+  .value-card .still{ width:100%; aspect-ratio:4.4/1; border-radius:2px; margin-bottom:16px; }
   .value-card h3{ font-family:var(--display); font-weight:600; font-size:16px; margin:0 0 8px; letter-spacing:0; }
   .value-card p{ font-size:13.5px; line-height:1.6; color:var(--muted); margin:0; }
 
@@ -121,20 +123,24 @@
 
   <!-- 01 COVER -->
   <section class="page cover">
-    <div class="counter"><b>01</b> / 13 — COVER</div>
-    <h1 class="disp">Siriai</h1>
-    <div class="jp">しりあい</div>
-    <div class="cover-copy">
-      <p>새로움을 설계하는 프라이빗 인플루언서 풀 — 그것이 SIRIAI의 방식입니다.</p>
+    <div class="counter"><b>01</b> / 14 — COVER</div>
+    <div class="cover-top">
+      <div class="cover-title">
+        <h1 class="disp">Siriai</h1>
+        <div class="jp">しりあい</div>
+      </div>
+      <div class="cover-copy">
+        <p class="primary">새로움을 설계하는 프라이빗 인플루언서 풀<br>—그것이 SIRIAI의 방식입니다.</p>
+        <p class="secondary">시리아이는 브랜드의 미적 기준과 정교하게 호흡하는 감도 높은 크리에이터를 기반으로 큐레이션을 수행합니다. AI 기반 분석과 무드 중심 선별 방식을 결합해, 브랜드의 아이덴티티에 가장 근접한 인플루언서를 제공합니다.</p>
+      </div>
     </div>
     <div class="cover-still"><img class="fill" src="media/cover.jpg" onerror="this.remove()" alt="" /></div>
   </section>
 
   <!-- 02 VALUES -->
   <section class="page">
-    <div class="counter"><b>02</b> / 13 — WHY SIRIAI</div>
-    <p class="eyebrow">Curating Creators, Elevating Brands</p>
-    <h1 class="disp" style="font-size:clamp(22px,3vw,30px)">브랜드의 결을 읽고,<br>가장 근접한 크리에이터를 붙입니다.</h1>
+    <div class="counter"><b>02</b> / 14 — WHY SIRIAI</div>
+    <h1 class="disp" style="font-size:clamp(28px,4vw,44px)">Curating Creators,<br>Elevating Brands</h1>
     <div class="values-grid">
       <div class="value-card">
         <div class="still" style="background:linear-gradient(135deg,#1a1712,#0d0b09)"></div>
