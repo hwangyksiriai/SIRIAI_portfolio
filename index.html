@@ -23,10 +23,10 @@
   .deck{ scroll-snap-type:y proximity; overflow-y:auto; height:100vh; scroll-behavior:smooth; }
   .page{
     scroll-snap-align:start; min-height:100vh; position:relative;
-    padding:104px 64px 90px; display:flex; flex-direction:column;
+    padding:56px 64px 90px; display:flex; flex-direction:column;
     border-bottom:1px solid var(--line);
   }
-  @media (max-width:720px){ .page{ padding:76px 20px 84px; } }
+  @media (max-width:720px){ .page{ padding:32px 20px 84px; } }
 
   .hud{
     position:fixed; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center;
@@ -37,13 +37,6 @@
     background:rgba(21,19,15,.7); border:1px solid var(--line); padding:7px 14px; border-radius:999px;
     backdrop-filter:blur(6px); font-variant-numeric:tabular-nums;
   }
-
-  .counter{
-    position:absolute; top:40px; left:64px; font-family:var(--mono); font-size:11px;
-    letter-spacing:.1em; color:var(--muted); text-transform:uppercase;
-  }
-  @media (max-width:720px){ .counter{ top:24px; left:20px; } }
-  .counter b{ color:var(--ink); }
 
   .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
   h1.disp{ font-family:var(--display); font-weight:700; letter-spacing:-.01em; line-height:1.08; margin:0; text-wrap:balance; }
@@ -102,10 +95,8 @@
   .reel-strip .clip{ aspect-ratio:9/16; }
   @media (max-width:900px){ .reel-strip{ grid-template-columns:repeat(2,1fr); } }
 
-  .travel-grid{ grid-column:1/-1; align-self:start; display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-  .travel-col{ display:flex; flex-direction:column; gap:14px; }
+  .travel-grid{ grid-column:1/-1; align-self:start; display:flex; flex-direction:column; gap:14px; }
   .clip.landscape{ width:100%; aspect-ratio:16/9; }
-  @media (max-width:900px){ .travel-grid{ grid-template-columns:1fr; } }
 
   .clip.span-2c{ grid-column:span 2; }
   .clip.span-3c{ grid-column:span 3; }
@@ -118,15 +109,6 @@
   .clip.slot span{ font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.04em; text-align:center; padding:0 10px; }
 
   .cat-foot{ margin-top:18px; font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.03em; }
-
-  /* Closing */
-  .closing{ justify-content:center; align-items:flex-start; }
-  .closing h1.disp{ font-size:clamp(28px,4vw,44px); }
-  .closing .lead{ max-width:40ch; }
-  .closing-links{ margin-top:32px; display:flex; flex-direction:column; gap:8px; }
-  .closing-links a{ color:var(--ink); font-size:15px; text-decoration:none; border-bottom:1px solid var(--line); width:fit-content; padding-bottom:2px; }
-  .closing-links a:hover{ border-color:var(--accent); color:var(--accent); }
-  .closing-still{ margin-top:auto; width:100%; aspect-ratio:21/7; border-radius:18px; background:linear-gradient(120deg,#171310 0%,#0a0908 60%,#241a0f 100%); }
 </style>
 </head>
 <body>
@@ -135,7 +117,6 @@
 
   <!-- 01 COVER -->
   <section class="page cover">
-    <div class="counter"><b>01</b> / 14 — COVER</div>
     <div class="cover-top">
       <div class="cover-title">
         <h1 class="disp">Siriai</h1>
@@ -151,7 +132,6 @@
 
   <!-- 02 VALUES -->
   <section class="page">
-    <div class="counter"><b>02</b> / 14 — WHY SIRIAI</div>
     <h1 class="disp" style="font-size:clamp(28px,4vw,44px)">Curating Creators,<br>Elevating Brands</h1>
     <div class="values-grid">
       <div class="value-card">
@@ -174,7 +154,6 @@
 
   <!-- 03 SEGMENTS -->
   <section class="page">
-    <div class="counter"><b>03</b> / 14 — INDEX</div>
     <h1 class="disp" style="font-size:clamp(30px,4.4vw,44px)">Our Core<br>Campaign Segments</h1>
     <p class="lead">SIRIAI는 다양한 카테고리의 캠페인을 폭넓게 수행하며,<br>브랜드별 니즈에 맞춘 인플루언서 협업을 설계합니다.</p>
     <div class="seg-grid">
@@ -223,17 +202,15 @@
 
   <!-- 04 BEAUTY -->
   <section class="page" id="cat-beauty">
-    <div class="counter"><b>04</b> / 14 — BEAUTY</div>
     <div class="cat-head">
       <h1 class="disp">Beauty</h1>
-      <div class="cat-tag">스킨케어 · 색조</div>
     </div>
     <div class="clip-grid">
-      <div class="reel-strip">
-        <div class="clip"><video class="fill" src="media/beauty/lee-jerin.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/beauty/jang-sohee.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/beauty/yoon-hyerin.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/beauty/hyeonmyeong-2.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-strip" id="reel-beauty">
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video></div>
       </div>
     </div>
     <div class="cat-foot">media/beauty/ 폴더에 파일을 추가하면 릴스가 늘어납니다.</div>
@@ -241,10 +218,8 @@
 
   <!-- 05 LIVING & PERSONAL CARE -->
   <section class="page" id="cat-living">
-    <div class="counter"><b>05</b> / 14 — LIVING &amp; PERSONAL CARE</div>
     <div class="cat-head">
       <h1 class="disp">Living &amp; Personal Care</h1>
-      <div class="cat-tag">NEW · 생활 · 위생</div>
     </div>
     <div class="clip-grid">
       <div class="reel-strip">
@@ -258,10 +233,8 @@
 
   <!-- 06 FASHION -->
   <section class="page" id="cat-fashion">
-    <div class="counter"><b>06</b> / 14 — FASHION</div>
     <div class="cat-head">
       <h1 class="disp">Fashion</h1>
-      <div class="cat-tag">패션 브랜드 · 크리에이터</div>
     </div>
     <div class="clip-grid">
       <div class="reel-strip">
@@ -276,21 +249,15 @@
 
   <!-- 06 TRAVEL -->
   <section class="page" id="cat-travel">
-    <div class="counter"><b>07</b> / 14 — TRAVEL &amp; TOURISM</div>
     <div class="cat-head">
       <h1 class="disp">Travel &amp; Tourism</h1>
-      <div class="cat-tag">해외 크리에이터 협업</div>
     </div>
     <div class="clip-grid">
       <div class="travel-grid">
-        <div class="travel-col">
-          <div class="clip landscape"><video class="fill" src="media/travel-tourism/oh-youngju.mp4" autoplay muted loop playsinline></video></div>
-          <div class="clip landscape"><video class="fill" src="media/travel-tourism/jongwoo-gallery.mp4" autoplay muted loop playsinline></video></div>
-        </div>
-        <div class="travel-col">
-          <div class="clip landscape"><video class="fill" src="media/travel-tourism/reichan.mp4" autoplay muted loop playsinline></video></div>
-          <div class="clip landscape"><video class="fill" src="media/travel-tourism/phatthararwee.mp4" autoplay muted loop playsinline></video></div>
-        </div>
+        <div class="clip landscape"><video class="fill" src="media/travel-tourism/oh-youngju.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip landscape"><video class="fill" src="media/travel-tourism/jongwoo-gallery.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip landscape"><video class="fill" src="media/travel-tourism/reichan.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip landscape"><video class="fill" src="media/travel-tourism/phatthararwee.mp4" autoplay muted loop playsinline></video></div>
       </div>
     </div>
     <div class="cat-foot">media/travel-tourism/ 에 대표 브랜드 이미지를 넣고 이 파일의 media/travel-tourism/... 경로를 채워주세요.</div>
@@ -298,10 +265,8 @@
 
   <!-- 07 F&B -->
   <section class="page" id="cat-fnb">
-    <div class="counter"><b>08</b> / 14 — F&amp;B</div>
     <div class="cat-head">
       <h1 class="disp">F&amp;B</h1>
-      <div class="cat-tag">식품 전시·박람회</div>
     </div>
     <div class="clip-grid">
       <div class="reel-strip">
@@ -316,10 +281,8 @@
 
   <!-- 08 ARTIST PROMOTION -->
   <section class="page" id="cat-artist">
-    <div class="counter"><b>09</b> / 14 — ARTIST PROMOTION</div>
     <div class="cat-head">
       <h1 class="disp">Artist Promotion</h1>
-      <div class="cat-tag">해외 아티스트 협업</div>
     </div>
     <div class="clip-grid">
       <div class="reel-strip">
@@ -333,10 +296,8 @@
 
   <!-- 09 CELEBRITY & MAGAZINE -->
   <section class="page" id="cat-celebrity">
-    <div class="counter"><b>10</b> / 14 — CELEBRITY &amp; MAGAZINE</div>
     <div class="cat-head">
       <h1 class="disp">Celebrity &amp; Magazine</h1>
-      <div class="cat-tag">틈결 연예인 섭외 · 매거진</div>
     </div>
     <div class="clip-grid">
       <div class="reel-strip">
@@ -350,10 +311,8 @@
 
   <!-- 10 HEALTH & WELLNESS -->
   <section class="page" id="cat-health">
-    <div class="counter"><b>11</b> / 14 — HEALTH &amp; WELLNESS</div>
     <div class="cat-head">
       <h1 class="disp">Health &amp; Wellness</h1>
-      <div class="cat-tag">건기식 중심</div>
     </div>
     <div class="clip-grid">
       <div class="reel-strip">
@@ -367,24 +326,23 @@
 
   <!-- 11 MEDICAL -->
   <section class="page" id="cat-medical">
-    <div class="counter"><b>12</b> / 14 — MEDICAL</div>
     <div class="cat-head">
       <h1 class="disp">Medical</h1>
-      <div class="cat-tag">NEW · ID Hospital</div>
     </div>
     <div class="clip-grid">
-      <div class="clip span-3c span-3r"><img class="fill" src="media/medical/id-hospital.jpg" onerror="this.remove()" alt=""/><div class="brand">ID Hospital</div><div class="fmt">Reels</div></div>
-      <div class="clip slot span-3c span-3r"><span>+ 대표 클립 2</span></div>
+      <div class="reel-strip">
+        <div class="clip"><video class="fill" src="media/medical/ID_jessica.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" src="media/medical/kim-nahyun.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" src="media/medical/kim-jaeeun.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" src="media/medical/jang-geonwoo.mp4" autoplay muted loop playsinline></video></div>
+      </div>
     </div>
-    <div class="cat-foot">media/medical/id-hospital.jpg 파일을 넣으면 자동으로 채워집니다.</div>
   </section>
 
   <!-- 12 POPUP VISIT -->
   <section class="page" id="cat-popup">
-    <div class="counter"><b>13</b> / 14 — POPUP VISIT</div>
     <div class="cat-head">
       <h1 class="disp">Popup Visit</h1>
-      <div class="cat-tag">틈결 × 에스더버니 @ 성수 아뜰리에</div>
     </div>
     <div class="clip-grid">
       <div class="reel-strip">
@@ -396,22 +354,11 @@
     </div>
   </section>
 
-  <!-- 13 CLOSING -->
-  <section class="page closing">
-    <div class="counter"><b>14</b> / 14 — CONTACT</div>
-    <p class="eyebrow">Let's Work Together</p>
-    <h1 class="disp">브랜드의 다음 캠페인,<br>SIRIAI와 함께.</h1>
-    <div class="closing-links">
-      <a href="mailto:hwangyksiriai@gmail.com">hwangyksiriai@gmail.com</a>
-      <a href="#">Instagram — @siriai.official</a>
-    </div>
-    <div class="closing-still"></div>
-  </section>
 
 </div>
 
 <div class="hud">
-  <div class="hud-pill" id="hud-counter">01 / 14</div>
+  <div class="hud-pill" id="hud-counter">01 / 13</div>
   <div class="hud-pill">↑ ↓ ARROW KEYS</div>
 </div>
 
@@ -432,7 +379,7 @@
 
   deck.addEventListener('scroll', ()=>{
     const i = currentIndex();
-    hud.textContent = String(i+1).padStart(2,'0') + ' / 14';
+    hud.textContent = String(i+1).padStart(2,'0') + ' / 13';
   }, { passive:true });
 
   window.addEventListener('keydown', (e)=>{
@@ -448,7 +395,21 @@
   // the meantime just keep looping so nothing ever sits frozen.
   // Add entries here for any category with more clips than fit on screen at
   // once — e.g. { container: 'reel-id', sources: [...8+ files] }.
-  const REEL_ROTATIONS = [];
+  const REEL_ROTATIONS = [
+    {
+      container: 'reel-beauty',
+      sources: [
+        'media/beauty/lee-jerin.mp4',
+        'media/beauty/jang-sohee.mp4',
+        'media/beauty/yoon-hyerin.mp4',
+        'media/beauty/hyeonmyeong-2.mp4',
+        'media/beauty/abroad-1.mp4',
+        'media/beauty/abroad-2.mp4',
+        'media/beauty/abroad-3.mp4',
+        'media/beauty/abroad-4.mp4'
+      ]
+    }
+  ];
 
   function setupReelRotation(containerId, sources){
     const container = document.getElementById(containerId);
