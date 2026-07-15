@@ -5,8 +5,8 @@
   --accent: #c98a3f;
   --line: #262019;
   --card: #15130f;
-  --display: -apple-system, "Pretendard", "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
-  --body: -apple-system, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --display: "Helvetica Neue", Helvetica, Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --body: "Helvetica Neue", Helvetica, Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --mono: "SFMono-Regular", "Consolas", "Menlo", monospace;
 }
 *{ box-sizing:border-box; }
@@ -47,12 +47,12 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 .cat-nav a.active{ color:var(--ink); background:rgba(201,138,63,.16); }
 
 .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
-h1.disp{ font-family:var(--display); font-weight:700; letter-spacing:-.01em; line-height:1.08; margin:0; text-wrap:balance; }
+h1.disp{ font-family:var(--display); font-weight:700; letter-spacing:-.005em; line-height:1.12; margin:0; text-wrap:balance; }
 p.lead{ font-size:15px; line-height:1.7; color:var(--muted); max-width:38ch; margin:16px 0 0; }
 
 /* Cover */
 .cover-top{ display:flex; justify-content:space-between; align-items:center; gap:48px; flex-wrap:wrap; }
-.cover-title{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+.cover-title{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
 .cover-title h1.disp{ font-size:clamp(40px,6vw,72px); }
 .cover-title .jp{ font-family:var(--body); font-weight:400; color:var(--muted); font-size:18px; }
 .cover-copy{ max-width:34ch; padding-top:4px; }
