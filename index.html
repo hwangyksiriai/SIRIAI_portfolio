@@ -23,10 +23,10 @@
   .deck{ scroll-snap-type:y proximity; overflow-y:auto; height:100vh; scroll-behavior:smooth; }
   .page{
     scroll-snap-align:start; min-height:100vh; position:relative;
-    padding:56px 64px 90px; display:flex; flex-direction:column;
+    padding:84px 64px 90px; display:flex; flex-direction:column;
     border-bottom:1px solid var(--line);
   }
-  @media (max-width:720px){ .page{ padding:32px 20px 84px; } }
+  @media (max-width:720px){ .page{ padding:76px 20px 84px; } }
 
   .hud{
     position:fixed; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center;
@@ -37,6 +37,21 @@
     background:rgba(21,19,15,.7); border:1px solid var(--line); padding:7px 14px; border-radius:999px;
     backdrop-filter:blur(6px); font-variant-numeric:tabular-nums;
   }
+
+  .cat-nav{
+    position:fixed; top:0; left:0; right:0; z-index:6;
+    display:flex; align-items:center; gap:2px; overflow-x:auto;
+    padding:14px 20px; background:rgba(10,9,8,.82); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line); scrollbar-width:none;
+  }
+  .cat-nav::-webkit-scrollbar{ display:none; }
+  .cat-nav a{
+    flex:0 0 auto; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--muted); text-decoration:none; padding:6px 12px; border-radius:999px; white-space:nowrap;
+    transition:color .15s ease, background .15s ease;
+  }
+  .cat-nav a:hover{ color:var(--ink); }
+  .cat-nav a.active{ color:var(--ink); background:rgba(201,138,63,.16); }
 
   .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
   h1.disp{ font-family:var(--display); font-weight:700; letter-spacing:-.01em; line-height:1.08; margin:0; text-wrap:balance; }
@@ -130,6 +145,19 @@
 </style>
 </head>
 <body>
+
+<nav class="cat-nav" id="cat-nav">
+  <a href="#cat-beauty" data-cat="cat-beauty">Beauty</a>
+  <a href="#cat-living" data-cat="cat-living">Life Style</a>
+  <a href="#cat-fashion" data-cat="cat-fashion">Fashion</a>
+  <a href="#cat-travel" data-cat="cat-travel">Travel &amp; Tourism</a>
+  <a href="#cat-fnb" data-cat="cat-fnb">F&amp;B</a>
+  <a href="#cat-artist" data-cat="cat-artist">Artist Promotion</a>
+  <a href="#cat-celebrity" data-cat="cat-celebrity">Celebrity &amp; Magazine</a>
+  <a href="#cat-health" data-cat="cat-health">Health &amp; Wellness</a>
+  <a href="#cat-medical" data-cat="cat-medical">Medical</a>
+  <a href="#cat-popup" data-cat="cat-popup">Popup Visit</a>
+</nav>
 
 <div class="deck" id="deck">
 
@@ -379,17 +407,13 @@
   <section class="page" id="cat-popup">
     <div class="cat-head">
       <h1 class="disp">Popup Visit</h1>
-      <div class="region-toggle" data-region-target="reel-popup">
-        <button type="button" class="region-btn active" data-region="domestic">국내</button>
-        <button type="button" class="region-btn" data-region="abroad">해외</button>
-      </div>
     </div>
     <div class="clip-grid">
-      <div class="reel-strip" id="reel-popup">
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+      <div class="reel-strip">
+        <div class="clip"><video class="fill" src="media/popup-visit/domestic/teumgyeol-estherbunny.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" src="media/popup-visit/domestic/kim-nayoung.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" src="media/popup-visit/domestic/tocobo.mp4" autoplay muted loop playsinline></video></div>
+        <div class="clip"><video class="fill" src="media/popup-visit/domestic/jia.mp4" autoplay muted loop playsinline></video></div>
       </div>
     </div>
   </section>
@@ -416,9 +440,18 @@
     return idx;
   }
 
+  const navLinks = Array.from(document.querySelectorAll('#cat-nav a'));
+
+  function updateActiveNav(){
+    const i = currentIndex();
+    const currentId = pages[i].id;
+    navLinks.forEach(a => a.classList.toggle('active', a.dataset.cat === currentId));
+  }
+
   deck.addEventListener('scroll', ()=>{
     const i = currentIndex();
     hud.textContent = String(i+1).padStart(2,'0') + ' / 13';
+    updateActiveNav();
   }, { passive:true });
 
   window.addEventListener('keydown', (e)=>{
@@ -428,6 +461,16 @@
     const next = e.key === 'ArrowDown' ? Math.min(i+1, pages.length-1) : Math.max(i-1, 0);
     pages[next].scrollIntoView({ behavior:'smooth', block:'start' });
   });
+
+  navLinks.forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById(a.dataset.cat);
+      if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  });
+
+  updateActiveNav();
 
   // Rotating reel sets: shows N videos at once; when the slowest one in the
   // current set finishes, swaps all slots to the next set. Shorter clips in
@@ -523,15 +566,6 @@
         'media/travel-tourism/abroad/yun-ling-he.mp4',
         'media/travel-tourism/abroad/kanaka.mp4'
       ]
-    },
-    'reel-popup': {
-      domestic: [
-        'media/popup-visit/domestic/teumgyeol-estherbunny.mp4',
-        'media/popup-visit/domestic/kim-nayoung.mp4',
-        'media/popup-visit/domestic/tocobo.mp4',
-        'media/popup-visit/domestic/jia.mp4'
-      ],
-      abroad: []
     },
     'reel-artist': {
       japan: [
