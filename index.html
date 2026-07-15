@@ -216,10 +216,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 9l1-5h14l1 5M4 9v10h16V9M4 9h16M9 19v-6h6v6"/></svg>
         <div class="name">Popup Visit</div>
       </a>
-      <a class="seg-cell" href="#cat-dance">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"/><path d="M12 8v6M12 14l-4 6M12 14l4 6M8 11l-3 2M16 11l3 2"/></svg>
-        <div class="name">Dance</div>
-      </a>
     </div>
   </section>
 
@@ -313,13 +309,18 @@
   <section class="page" id="cat-artist">
     <div class="cat-head">
       <h1 class="disp">Artist Promotion</h1>
+      <div class="region-toggle" data-region-target="reel-artist">
+        <button type="button" class="region-btn active" data-region="japan">일본</button>
+        <button type="button" class="region-btn" data-region="southeast-asia">동남아</button>
+        <button type="button" class="region-btn" data-region="north-america">북미</button>
+      </div>
     </div>
     <div class="clip-grid">
-      <div class="reel-strip">
-        <div class="clip"><video class="fill" src="media/artist-promotion/clip-1.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/artist-promotion/clip-2.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/artist-promotion/clip-3.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/artist-promotion/clip-4.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-strip" id="reel-artist">
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
       </div>
     </div>
   </section>
@@ -388,30 +389,10 @@
     </div>
   </section>
 
-  <!-- 13 DANCE -->
-  <section class="page" id="cat-dance">
-    <div class="cat-head">
-      <h1 class="disp">Dance</h1>
-      <div class="region-toggle" data-region-target="reel-dance">
-        <button type="button" class="region-btn active" data-region="japan">일본</button>
-        <button type="button" class="region-btn" data-region="southeast-asia">동남아</button>
-        <button type="button" class="region-btn" data-region="north-america">북미</button>
-      </div>
-    </div>
-    <div class="clip-grid">
-      <div class="reel-strip" id="reel-dance">
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-      </div>
-    </div>
-  </section>
-
 </div>
 
 <div class="hud">
-  <div class="hud-pill" id="hud-counter">01 / 14</div>
+  <div class="hud-pill" id="hud-counter">01 / 13</div>
   <div class="hud-pill">↑ ↓ ARROW KEYS</div>
 </div>
 
@@ -432,7 +413,7 @@
 
   deck.addEventListener('scroll', ()=>{
     const i = currentIndex();
-    hud.textContent = String(i+1).padStart(2,'0') + ' / 14';
+    hud.textContent = String(i+1).padStart(2,'0') + ' / 13';
   }, { passive:true });
 
   window.addEventListener('keydown', (e)=>{
@@ -538,8 +519,13 @@
       ],
       abroad: []
     },
-    'reel-dance': {
-      japan: [],
+    'reel-artist': {
+      japan: [
+        'media/artist-promotion/clip-1.mp4',
+        'media/artist-promotion/clip-2.mp4',
+        'media/artist-promotion/clip-3.mp4',
+        'media/artist-promotion/clip-4.mp4'
+      ],
       'southeast-asia': [],
       'north-america': []
     }
