@@ -1,4 +1,7 @@
 .vercel
+node_modules/
+.next/
+.env.local
 /포트폴리오_pdf.pdf
 /image/
 /beauty/
@@ -10,3 +13,6 @@
 /Celebrity & Magazine/
 /Health & Wellness/
 /media/beauty_abroad/
+
+.env*
+/media/
