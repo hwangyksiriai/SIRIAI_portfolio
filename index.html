@@ -104,8 +104,9 @@
   .reel-strip .clip{ aspect-ratio:9/16; }
   @media (max-width:900px){ .reel-strip{ grid-template-columns:repeat(2,1fr); } }
 
-  .travel-grid{ grid-column:1/-1; align-self:start; display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
-  .clip.landscape{ height:24vh; aspect-ratio:16/9; width:auto; flex:0 0 auto; }
+  .travel-grid{ grid-column:1/-1; align-self:start; display:flex; gap:14px; justify-content:center; }
+  .travel-col{ display:flex; flex-direction:column; gap:14px; }
+  .clip.landscape{ height:32vh; aspect-ratio:16/9; width:auto; flex:0 0 auto; }
 
   .clip.span-2c{ grid-column:span 2; }
   .clip.span-3c{ grid-column:span 3; }
@@ -281,10 +282,14 @@
     </div>
     <div class="clip-grid">
       <div class="travel-grid" id="reel-travel">
-        <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-        <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-        <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
-        <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="travel-col">
+          <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+          <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        </div>
+        <div class="travel-col">
+          <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+          <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        </div>
       </div>
     </div>
   </section>
