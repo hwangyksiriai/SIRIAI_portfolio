@@ -119,6 +119,14 @@
   .clip.slot{ background:transparent; border:1px dashed var(--line); display:flex; align-items:center; justify-content:center; }
   .clip.slot span{ font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.04em; text-align:center; padding:0 10px; }
 
+  .clip .slot-msg{ display:none; }
+  .clip.empty{ background:transparent; border:1px dashed var(--line); }
+  .clip.empty video{ display:none; }
+  .clip.empty .slot-msg{
+    display:flex; position:absolute; inset:0; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.04em; text-align:center; padding:0 10px;
+  }
+
   .cat-foot{ margin-top:18px; font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.03em; }
 </style>
 </head>
@@ -208,6 +216,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 9l1-5h14l1 5M4 9v10h16V9M4 9h16M9 19v-6h6v6"/></svg>
         <div class="name">Popup Visit</div>
       </a>
+      <a class="seg-cell" href="#cat-dance">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"/><path d="M12 8v6M12 14l-4 6M12 14l4 6M8 11l-3 2M16 11l3 2"/></svg>
+        <div class="name">Dance</div>
+      </a>
     </div>
   </section>
 
@@ -249,36 +261,36 @@
   <section class="page" id="cat-fashion">
     <div class="cat-head">
       <h1 class="disp">Fashion</h1>
-    </div>
-    <div class="clip-grid">
-      <div class="reel-strip">
-        <div class="clip"><video class="fill" src="media/fashion/rooab.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/fashion/kim-minji.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/fashion/park-nayeon.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/fashion/dear.mp4" autoplay muted loop playsinline></video></div>
+      <div class="region-toggle" data-region-target="reel-fashion">
+        <button type="button" class="region-btn active" data-region="domestic">국내</button>
+        <button type="button" class="region-btn" data-region="abroad">해외</button>
       </div>
     </div>
-    <div class="cat-foot">media/fashion/ 폴더에 innir.jpg, bluesunset.jpg, greencontinue.jpg 파일을 넣으면 자동으로 채워집니다.</div>
+    <div class="clip-grid">
+      <div class="reel-strip" id="reel-fashion">
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+      </div>
+    </div>
   </section>
 
   <!-- 06 TRAVEL -->
   <section class="page" id="cat-travel">
     <div class="cat-head">
       <h1 class="disp">Travel &amp; Tourism</h1>
-    </div>
-    <div class="clip-grid">
-      <div class="travel-grid">
-        <div class="travel-col">
-          <div class="clip landscape"><video class="fill" src="media/travel-tourism/oh-youngju.mp4" autoplay muted loop playsinline></video></div>
-          <div class="clip landscape"><video class="fill" src="media/travel-tourism/jongwoo-gallery.mp4" autoplay muted loop playsinline></video></div>
-        </div>
-        <div class="travel-col">
-          <div class="clip landscape"><video class="fill" src="media/travel-tourism/reichan.mp4" autoplay muted loop playsinline></video></div>
-          <div class="clip landscape"><video class="fill" src="media/travel-tourism/phatthararwee.mp4" autoplay muted loop playsinline></video></div>
-        </div>
+      <div class="region-toggle" data-region-target="reel-travel">
+        <button type="button" class="region-btn active" data-region="domestic">국내</button>
+        <button type="button" class="region-btn" data-region="abroad">해외</button>
       </div>
     </div>
-    <div class="cat-foot">media/travel-tourism/ 에 대표 브랜드 이미지를 넣고 이 파일의 media/travel-tourism/... 경로를 채워주세요.</div>
+    <div class="clip-grid">
+      <div class="travel-grid" id="reel-travel">
+        <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip landscape"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+      </div>
+    </div>
   </section>
 
   <!-- 07 F&B -->
@@ -361,22 +373,45 @@
   <section class="page" id="cat-popup">
     <div class="cat-head">
       <h1 class="disp">Popup Visit</h1>
+      <div class="region-toggle" data-region-target="reel-popup">
+        <button type="button" class="region-btn active" data-region="domestic">국내</button>
+        <button type="button" class="region-btn" data-region="abroad">해외</button>
+      </div>
     </div>
     <div class="clip-grid">
-      <div class="reel-strip">
-        <div class="clip"><video class="fill" src="media/popup-visit/teumgyeol-estherbunny.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/popup-visit/kim-nayoung.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/popup-visit/tocobo.mp4" autoplay muted loop playsinline></video></div>
-        <div class="clip"><video class="fill" src="media/popup-visit/jia.mp4" autoplay muted loop playsinline></video></div>
+      <div class="reel-strip" id="reel-popup">
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
       </div>
     </div>
   </section>
 
+  <!-- 13 DANCE -->
+  <section class="page" id="cat-dance">
+    <div class="cat-head">
+      <h1 class="disp">Dance</h1>
+      <div class="region-toggle" data-region-target="reel-dance">
+        <button type="button" class="region-btn active" data-region="japan">일본</button>
+        <button type="button" class="region-btn" data-region="southeast-asia">동남아</button>
+        <button type="button" class="region-btn" data-region="north-america">북미</button>
+      </div>
+    </div>
+    <div class="clip-grid">
+      <div class="reel-strip" id="reel-dance">
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+        <div class="clip"><video class="fill" autoplay muted loop playsinline></video><span class="slot-msg">+ 준비중</span></div>
+      </div>
+    </div>
+  </section>
 
 </div>
 
 <div class="hud">
-  <div class="hud-pill" id="hud-counter">01 / 13</div>
+  <div class="hud-pill" id="hud-counter">01 / 14</div>
   <div class="hud-pill">↑ ↓ ARROW KEYS</div>
 </div>
 
@@ -397,7 +432,7 @@
 
   deck.addEventListener('scroll', ()=>{
     const i = currentIndex();
-    hud.textContent = String(i+1).padStart(2,'0') + ' / 13';
+    hud.textContent = String(i+1).padStart(2,'0') + ' / 14';
   }, { passive:true });
 
   window.addEventListener('keydown', (e)=>{
@@ -474,6 +509,39 @@
         'media/beauty/abroad-3.mp4',
         'media/beauty/abroad-4.mp4'
       ]
+    },
+    'reel-fashion': {
+      domestic: [
+        'media/fashion/domestic/rooab.mp4',
+        'media/fashion/domestic/kim-minji.mp4',
+        'media/fashion/domestic/park-nayeon.mp4',
+        'media/fashion/domestic/dear.mp4'
+      ],
+      abroad: []
+    },
+    'reel-travel': {
+      domestic: [
+        'media/travel-tourism/domestic/oh-youngju.mp4',
+        'media/travel-tourism/domestic/jongwoo-gallery.mp4'
+      ],
+      abroad: [
+        'media/travel-tourism/abroad/reichan.mp4',
+        'media/travel-tourism/abroad/phatthararwee.mp4'
+      ]
+    },
+    'reel-popup': {
+      domestic: [
+        'media/popup-visit/domestic/teumgyeol-estherbunny.mp4',
+        'media/popup-visit/domestic/kim-nayoung.mp4',
+        'media/popup-visit/domestic/tocobo.mp4',
+        'media/popup-visit/domestic/jia.mp4'
+      ],
+      abroad: []
+    },
+    'reel-dance': {
+      japan: [],
+      'southeast-asia': [],
+      'north-america': []
     }
   };
 
@@ -481,13 +549,21 @@
     const sets = REGION_SETS[containerId];
     if(!sets) return;
     const container = document.getElementById(containerId);
-    const videos = Array.from(container.querySelectorAll('video'));
+    const clips = Array.from(container.querySelectorAll('.clip'));
     const sources = sets[region] || [];
-    videos.forEach((v, i) => {
-      if(!sources[i]) return;
-      v.src = sources[i];
-      v.load();
-      v.play().catch(()=>{});
+    clips.forEach((clip, i) => {
+      const v = clip.querySelector('video');
+      const src = sources[i];
+      if(src){
+        clip.classList.remove('empty');
+        v.src = src;
+        v.load();
+        v.play().catch(()=>{});
+      } else {
+        clip.classList.add('empty');
+        v.removeAttribute('src');
+        v.load();
+      }
     });
   }
 
