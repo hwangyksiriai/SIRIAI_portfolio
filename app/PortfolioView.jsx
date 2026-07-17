@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+const BRAND_SYMBOL = 'https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/brand/symbol.png';
+const BRAND_LOGO = 'https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/brand/logo-white.png';
+
 function Clip({ src, landscape }) {
   const cls = 'clip' + (landscape ? ' landscape' : '') + (src ? '' : ' empty');
   return (
@@ -150,8 +153,8 @@ export default function PortfolioView({ config }) {
     <>
       <nav className="cat-nav" id="cat-nav">
         <a className="wordmark" href="#" onClick={(e) => { e.preventDefault(); deckRef.current?.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-          <span className="mark">S</span>
-          <span className="word">SIRIAI</span>
+          <span className="mark"><img src={BRAND_SYMBOL} alt="" /></span>
+          <img className="word" src={BRAND_LOGO} alt="SIRIAI" />
         </a>
         <div className="cat-nav-links">
           {categories.map((cat) => (
@@ -173,7 +176,7 @@ export default function PortfolioView({ config }) {
           <IdxTag n={1} label="COVER" />
           <div className="cover-top">
             <div className="cover-title">
-              <h1 className="disp">Siriai</h1>
+              <img className="cover-logo" src={BRAND_LOGO} alt="Siriai" />
               <div className="jp">しりあい</div>
             </div>
             <div className="cover-copy">

@@ -52,10 +52,10 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 }
 .wordmark{ display:flex; align-items:center; gap:9px; flex:0 0 auto; text-decoration:none; cursor:pointer; }
 .wordmark .mark{
-  width:22px; height:22px; border:1px solid var(--accent); border-radius:4px; display:flex; align-items:center; justify-content:center;
-  font-family:var(--display); font-size:11.5px; font-weight:600; color:var(--accent);
+  width:22px; height:22px; border-radius:5px; overflow:hidden; display:flex; align-items:center; justify-content:center;
 }
-.wordmark .word{ font-family:var(--display); font-weight:600; font-size:14.5px; letter-spacing:.02em; color:var(--ink); }
+.wordmark .mark img{ width:100%; height:100%; object-fit:cover; }
+img.word{ height:15px; width:auto; display:block; }
 
 .cat-nav-links{ display:flex; align-items:center; gap:2px; overflow-x:auto; scrollbar-width:none; flex:1; }
 .cat-nav-links::-webkit-scrollbar{ display:none; }
@@ -75,6 +75,7 @@ p.lead{ font-size:15px; line-height:1.7; color:var(--muted); max-width:40ch; mar
 .cover-top{ display:flex; justify-content:space-between; align-items:center; gap:56px; flex-wrap:wrap; }
 .cover-title{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
 .cover-title h1.disp{ font-size:clamp(44px,7vw,84px); }
+.cover-logo{ height:clamp(44px,7vw,84px); width:auto; display:block; }
 .cover-title .jp{ font-family:var(--body); font-weight:400; color:var(--muted); font-size:18px; }
 .cover-copy{ max-width:36ch; padding-top:6px; }
 .cover-copy p.primary{ font-size:16px; font-weight:600; line-height:1.65; color:var(--ink); margin:0 0 16px; }
