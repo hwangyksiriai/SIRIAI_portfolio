@@ -9,8 +9,18 @@ function Clip({ src, landscape }) {
       {src ? (
         <video className="fill" src={src} autoPlay muted loop playsInline />
       ) : (
-        <span className="slot-msg">+ 준비중</span>
+        <span className="slot-msg"><span className="plus">+</span><span className="label">준비중</span></span>
       )}
+    </div>
+  );
+}
+
+function IdxTag({ n, label }) {
+  return (
+    <div className="idx-tag">
+      <span className="accent">{String(n).padStart(2, '0')}</span>
+      <span className="rule"></span>
+      <span>{label}</span>
     </div>
   );
 }
@@ -32,7 +42,7 @@ function RegionToggle({ regions, active, onChange }) {
   );
 }
 
-function CategorySection({ cat }) {
+function CategorySection({ cat, idx }) {
   const hasRegions = Array.isArray(cat.regions) && cat.regions.length > 0;
   const [activeRegion, setActiveRegion] = useState(hasRegions ? cat.regions[0].key : null);
   const clips = hasRegions
@@ -41,6 +51,7 @@ function CategorySection({ cat }) {
 
   return (
     <section className="page" id={cat.id}>
+      <IdxTag n={idx} label={cat.navLabel.toUpperCase()} />
       <div className="cat-head">
         <h1 className="disp">{cat.title}</h1>
         {hasRegions && (
@@ -138,21 +149,28 @@ export default function PortfolioView({ config }) {
   return (
     <>
       <nav className="cat-nav" id="cat-nav">
-        {categories.map((cat) => (
-          <a
-            key={cat.id}
-            href={`#${cat.id}`}
-            className={activeCat === cat.id ? 'active' : ''}
-            onClick={(e) => { e.preventDefault(); goToCategory(cat.id); }}
-          >
-            {cat.navLabel}
-          </a>
-        ))}
+        <a className="wordmark" href="#" onClick={(e) => { e.preventDefault(); deckRef.current?.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+          <span className="mark">S</span>
+          <span className="word">SIRIAI</span>
+        </a>
+        <div className="cat-nav-links">
+          {categories.map((cat) => (
+            <a
+              key={cat.id}
+              href={`#${cat.id}`}
+              className={activeCat === cat.id ? 'active' : ''}
+              onClick={(e) => { e.preventDefault(); goToCategory(cat.id); }}
+            >
+              {cat.navLabel}
+            </a>
+          ))}
+        </div>
       </nav>
 
       <div className="deck" id="deck" ref={deckRef}>
         {/* 01 COVER */}
         <section className="page cover">
+          <IdxTag n={1} label="COVER" />
           <div className="cover-top">
             <div className="cover-title">
               <h1 className="disp">Siriai</h1>
@@ -170,20 +188,24 @@ export default function PortfolioView({ config }) {
 
         {/* 02 VALUES */}
         <section className="page">
+          <IdxTag n={2} label="VALUES" />
           <h1 className="disp" style={{ fontSize: 'clamp(28px,4vw,44px)' }}>Curating Creators,<br />Elevating Brands</h1>
           <div className="values-grid">
             <div className="value-card">
               <div className="still"><img src="https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/value-1.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
+              <p className="num">01</p>
               <h3>Mood-Centric Curation</h3>
               <p>브랜드에 딱 맞는 크리에이터를 선별해, 브랜드의 가치를 더 높여드립니다.</p>
             </div>
             <div className="value-card">
               <div className="still"><img src="https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/value-2.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
+              <p className="num">02</p>
               <h3>AI-Driven Discovery</h3>
               <p>AI 시스템을 통해 신규 인플루언서를 지속적으로 발굴합니다.</p>
             </div>
             <div className="value-card">
               <div className="still"><img src="https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/value-3.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
+              <p className="num">03</p>
               <h3>Premium Content Quality</h3>
               <p>합리적 고효율 · 높은 영상 퀄리티로 캠페인마다 중복 없는 풀을 설계합니다.</p>
             </div>
@@ -192,11 +214,13 @@ export default function PortfolioView({ config }) {
 
         {/* 03 SEGMENTS */}
         <section className="page">
+          <IdxTag n={3} label="SEGMENTS" />
           <h1 className="disp" style={{ fontSize: 'clamp(30px,4.4vw,44px)' }}>Our Core<br />Campaign Segments</h1>
           <p className="lead">SIRIAI는 다양한 카테고리의 캠페인을 폭넓게 수행하며,<br />브랜드별 니즈에 맞춘 인플루언서 협업을 설계합니다.</p>
           <div className="seg-grid">
-            {categories.map((cat) => (
+            {categories.map((cat, i) => (
               <a className="seg-cell" href={`#${cat.id}`} key={cat.id} onClick={(e) => { e.preventDefault(); goToCategory(cat.id); }}>
+                <span className="seg-num">{String(i + 1).padStart(2, '0')}</span>
                 <SegIcon id={cat.id} />
                 <div className="name">{cat.navLabel}</div>
               </a>
@@ -204,8 +228,8 @@ export default function PortfolioView({ config }) {
           </div>
         </section>
 
-        {categories.map((cat) => (
-          <CategorySection cat={cat} key={cat.id} />
+        {categories.map((cat, i) => (
+          <CategorySection cat={cat} idx={4 + i} key={cat.id} />
         ))}
       </div>
 
