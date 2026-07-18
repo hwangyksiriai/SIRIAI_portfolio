@@ -47,10 +47,14 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 
 .cat-nav{
   position:fixed; top:0; left:0; right:0; z-index:6;
-  display:flex; align-items:center; gap:22px;
-  padding:16px 28px; background:var(--nav-bg); backdrop-filter:blur(10px);
+  background:var(--nav-bg); backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
+.cat-nav-inner{
+  display:flex; align-items:center; gap:22px;
+  max-width:var(--content-max); margin:0 auto; padding:16px var(--pad-x);
+}
+@media (max-width:720px){ .cat-nav-inner{ padding:16px 22px; } }
 .wordmark{ display:flex; align-items:center; gap:11px; flex:0 0 auto; text-decoration:none; cursor:pointer; }
 .wordmark .mark{
   width:32px; height:32px; border-radius:6px; overflow:hidden; display:flex; align-items:center; justify-content:center;

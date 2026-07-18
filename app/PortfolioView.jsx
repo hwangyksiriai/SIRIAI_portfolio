@@ -152,21 +152,23 @@ export default function PortfolioView({ config }) {
   return (
     <>
       <nav className="cat-nav" id="cat-nav">
-        <a className="wordmark" href="#" onClick={(e) => { e.preventDefault(); deckRef.current?.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-          <span className="mark"><img src={BRAND_SYMBOL} alt="" /></span>
-          <span className="word">SIRIAI</span>
-        </a>
-        <div className="cat-nav-links">
-          {categories.map((cat) => (
-            <a
-              key={cat.id}
-              href={`#${cat.id}`}
-              className={activeCat === cat.id ? 'active' : ''}
-              onClick={(e) => { e.preventDefault(); goToCategory(cat.id); }}
-            >
-              {cat.navLabel}
-            </a>
-          ))}
+        <div className="cat-nav-inner">
+          <a className="wordmark" href="#" onClick={(e) => { e.preventDefault(); deckRef.current?.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            <span className="mark"><img src={BRAND_SYMBOL} alt="" /></span>
+            <span className="word">SIRIAI</span>
+          </a>
+          <div className="cat-nav-links">
+            {categories.map((cat) => (
+              <a
+                key={cat.id}
+                href={`#${cat.id}`}
+                className={activeCat === cat.id ? 'active' : ''}
+                onClick={(e) => { e.preventDefault(); goToCategory(cat.id); }}
+              >
+                {cat.navLabel}
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
 
