@@ -56,7 +56,7 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
   width:32px; height:32px; border-radius:6px; overflow:hidden; display:flex; align-items:center; justify-content:center;
 }
 .wordmark .mark img{ width:100%; height:100%; object-fit:cover; }
-img.word{ height:22px; width:auto; display:block; }
+img.word{ height:30px; width:auto; display:block; }
 
 .cat-nav-links{ display:flex; align-items:center; gap:2px; overflow-x:auto; scrollbar-width:none; flex:1; }
 .cat-nav-links::-webkit-scrollbar{ display:none; }
