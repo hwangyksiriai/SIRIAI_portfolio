@@ -85,7 +85,7 @@ p.lead{ font-size:15px; line-height:1.7; color:var(--muted); max-width:40ch; mar
 .cover-still{
   margin-top:auto; margin-inline:auto; width:93%; border-radius:6px; overflow:hidden; position:relative;
   background:radial-gradient(120% 140% at 20% 20%, rgba(201,144,63,.28), transparent 55%), linear-gradient(100deg,#1b1712 0%,#0d0b09 45%,#221a10 100%);
-  border:1px solid var(--line);
+  border:none;
 }
 .cover-still:empty,
 .cover-still:not(:has(img)){ aspect-ratio:21/8; }
