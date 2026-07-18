@@ -10,15 +10,15 @@ export default function RootLayout({ children }) {
     <html lang="ko">
       <head>
         {/*
-          next/font/google can't be used for Tsukimi Rounded here: its only
-          declared subsets are latin/latin-ext, which excludes the Hiragana
-          range even though the font file itself contains those glyphs.
-          Since "しりあい" is fixed static text, Google's text= param
-          generates a subset covering exactly those characters instead.
+          next/font/google's declared subsets for Noto Sans JP omit an
+          explicit "japanese" label, but a plain Google Fonts CSS2 request
+          for this family serves one unrestricted font file covering
+          Hiragana/Kanji (verified via fontTools cmap inspection), so a
+          <link> tag is used instead of next/font/google here.
         */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Tsukimi+Rounded&text=%E3%81%97%E3%82%8A%E3%81%82%E3%81%84&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap"
         />
       </head>
       <body>{children}</body>
