@@ -86,7 +86,7 @@ p.lead{ font-size:21px; line-height:1.7; color:var(--muted); max-width:560px; ma
 .cover-title h1.disp{ font-size:clamp(44px,7vw,84px); }
 .cover-logo{ height:clamp(44px,6.5vw,80px); width:auto; display:block; }
 .cover-title .jp{ font-family:var(--jp); font-weight:700; color:var(--muted); font-size:23px; }
-.cover-copy{ max-width:640px; min-width:min(640px,100%); flex:0 1 auto; padding-top:6px; }
+.cover-copy{ max-width:640px; min-width:min(640px,100%); flex:0 1 auto; padding-top:6px; margin-left:30px; }
 .cover-copy p.primary{ font-size:20px; font-weight:600; line-height:1.6; color:var(--ink); margin:0 0 18px; }
 .cover-copy p.secondary{ font-size:16px; line-height:1.75; color:var(--muted); margin:0; }
 @media (max-width:720px){ .cover-copy{ max-width:100%; } }
