@@ -73,7 +73,7 @@ function CategorySection({ cat, idx }) {
 
   return (
     <section className="page" id={cat.id}>
-      <IdxTag n={idx} label={cat.navLabel.toUpperCase()} />
+      <IdxTag n={idx} label={(cat.tag || cat.navLabel).toUpperCase()} />
       <div className="cat-head">
         <h1 className="disp">{cat.title}</h1>
         {hasRegions && (
