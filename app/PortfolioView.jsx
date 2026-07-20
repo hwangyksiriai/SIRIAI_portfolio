@@ -234,23 +234,20 @@ export default function PortfolioView({ config }) {
 
         {/* 02 VALUES */}
         <section className="page">
-          <h1 className="disp" style={{ fontSize: 'clamp(28px,4vw,44px)' }}>Curating Creators,<br />Elevating Brands</h1>
+          <h1 className="disp" style={{ fontSize: 'clamp(42px,6.2vw,68px)' }}>Curating Creators,<br />Elevating Brands</h1>
           <div className="values-grid">
             <div className="value-card">
               <div className="still"><img src="/media/value-1.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
-              <p className="num">01</p>
               <h3>Mood-Centric Curation</h3>
               <p>브랜드에 딱 맞는 크리에이터를 선별해,<br />브랜드의 가치를 더 높여드립니다.</p>
             </div>
             <div className="value-card">
               <div className="still"><img src="/media/value-2.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
-              <p className="num">02</p>
               <h3>AI-Driven Discovery</h3>
               <p>AI 시스템을 통해 신규 인플루언서를<br />지속적으로 발굴합니다.</p>
             </div>
             <div className="value-card">
               <div className="still"><img src="/media/value-3.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
-              <p className="num">03</p>
               <h3>Premium Content Quality</h3>
               <p>합리적 고효율 · 높은 영상 퀄리티로<br />캠페인마다 중복 없는 풀을 설계합니다.</p>
             </div>
