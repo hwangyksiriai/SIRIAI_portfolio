@@ -184,8 +184,8 @@
     },
     {
       "id": "cat-popup",
-      "navLabel": "Popup Visit",
-      "title": "Popup Visit",
+      "navLabel": "Pop-up",
+      "title": "Pop-up",
       "layout": "reel",
       "clips": [
         "/media/popup-visit/domestic/teumgyeol-estherbunny.mp4",
