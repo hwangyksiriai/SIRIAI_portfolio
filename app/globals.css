@@ -31,7 +31,7 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 }
 @media (max-width:720px){ .page{ padding:96px 22px 88px; } }
 
-.idx-tag{ font-family:var(--mono); font-weight:700; font-size:12.5px; letter-spacing:.14em; color:var(--muted); margin:0 0 var(--sp-lg); display:flex; align-items:center; gap:10px; }
+.idx-tag{ font-family:var(--mono); font-weight:700; font-size:25px; letter-spacing:.14em; color:var(--muted); margin:0 0 var(--sp-lg); display:flex; align-items:center; gap:10px; }
 .idx-tag .rule{ width:32px; height:1px; background:var(--line); display:inline-block; }
 .idx-tag .accent{ color:var(--accent); }
 
@@ -123,7 +123,7 @@ p.lead{ font-size:15px; line-height:1.7; color:var(--muted); max-width:40ch; mar
 
 /* Category pages */
 .cat-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
-.cat-head h1.disp{ font-size:clamp(32px,4.4vw,52px); }
+.cat-head h1.disp{ font-size:55px; }
 .cat-tag{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--muted); border:1px solid var(--line); padding:6px 12px; border-radius:999px; white-space:nowrap; }
 
 .region-toggle{ display:flex; gap:8px; }
