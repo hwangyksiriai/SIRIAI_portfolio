@@ -224,7 +224,7 @@ export default function PortfolioView({ config }) {
             </div>
             <div className="cover-copy">
               <p className="primary">새로움을 설계하는 프라이빗 인플루언서 풀<br />—그것이 SIRIAI의 방식입니다.</p>
-              <p className="secondary">시리아이는 브랜드의 미적 기준과 정교하게 호흡하는 감도 높은 크리에이터를 기반으로 큐레이션을 수행합니다. AI 기반 분석과 무드 중심 선별 방식을 결합해, 브랜드의 아이덴티티에 가장 근접한 인플루언서를 제공합니다.</p>
+              <p className="secondary">시리아이는 브랜드의 미적 기준과 정교하게 호흡하는 감도 높은 크리에이터를<br />기반으로 큐레이션을 수행합니다. AI 기반 분석과 무드 중심 선별 방식을 결합해,<br />브랜드의 아이덴티티에 가장 근접한 인플루언서를 제공합니다.</p>
             </div>
           </div>
           <div className="cover-still">
