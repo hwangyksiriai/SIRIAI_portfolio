@@ -57,7 +57,7 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 @media (max-width:720px){ .cat-nav-inner{ padding:16px 22px; } }
 .wordmark{ display:flex; align-items:center; gap:11px; flex:0 0 auto; text-decoration:none; cursor:pointer; }
 .wordmark .mark{
-  width:32px; height:32px; border-radius:6px; overflow:hidden; display:flex; align-items:center; justify-content:center;
+  width:20px; height:20px; border-radius:4px; overflow:hidden; display:flex; align-items:center; justify-content:center;
 }
 .wordmark .mark img{ width:100%; height:100%; object-fit:cover; }
 .wordmark .word{ font-family:var(--display); font-weight:600; font-size:16px; letter-spacing:.02em; color:var(--ink); }
@@ -72,6 +72,8 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 }
 .cat-nav a:hover{ color:var(--ink); }
 .cat-nav a.active{ color:var(--ink); background:var(--accent-soft); }
+.cat-nav a.nav-external{ color:rgb(245,245,244); border:1px solid rgba(245,245,244,.28); }
+.cat-nav a.nav-external:hover{ background:rgba(245,245,244,.08); }
 
 .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
 h1.disp{ font-family:var(--display); font-weight:600; letter-spacing:-.005em; line-height:1.1; margin:0; text-wrap:balance; }

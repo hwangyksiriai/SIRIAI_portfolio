@@ -202,6 +202,8 @@ export default function PortfolioView({ config }) {
                 {cat.navLabel}
               </a>
             ))}
+            <a className="nav-external" href="https://cd-study-deploy.vercel.app/" target="_blank" rel="noopener noreferrer">Homepage</a>
+            <a className="nav-external" href="https://siriai-business.vercel.app/" target="_blank" rel="noopener noreferrer">Business</a>
           </div>
         </div>
       </nav>
