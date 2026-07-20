@@ -45,7 +45,7 @@
     {
       "id": "cat-fashion",
       "navLabel": "Fashion",
-      "tag": "Youtube",
+      "tag": "Reels",
       "title": "Fashion",
       "layout": "reel",
       "regions": [
@@ -74,7 +74,7 @@
     {
       "id": "cat-travel",
       "navLabel": "Travel & Tourism",
-      "tag": "Reels",
+      "tag": "Youtube",
       "title": "Travel & Tourism",
       "layout": "travel",
       "regions": [
