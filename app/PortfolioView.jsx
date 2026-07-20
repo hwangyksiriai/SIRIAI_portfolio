@@ -114,7 +114,7 @@ export default function PortfolioView({ config }) {
   const [pageLabel, setPageLabel] = useState('01');
 
   const categories = config.categories;
-  const totalPages = 3 + categories.length; // cover, values, segments + categories
+  const totalPages = 4 + categories.length; // cover, values, segments, contact + categories
 
   function collectPages() {
     if (!deckRef.current) return [];
@@ -271,6 +271,14 @@ export default function PortfolioView({ config }) {
         {categories.map((cat, i) => (
           <CategorySection cat={cat} idx={4 + i} key={cat.id} />
         ))}
+
+        {/* Contact */}
+        <section className="page contact">
+          <IdxTag n={4 + categories.length} label="CONTACT" />
+          <h1 className="disp" style={{ fontSize: 'clamp(30px,4.4vw,44px)' }}>Let's Work<br />Together</h1>
+          <p className="lead">브랜드 캠페인 협업 문의는 아래 이메일로 연락해 주세요.<br />빠르게 확인 후 답변드리겠습니다.</p>
+          <a className="contact-email" href="mailto:jysiriai@gmail.com">jysiriai@gmail.com</a>
+        </section>
       </div>
 
       <div className="hud">
