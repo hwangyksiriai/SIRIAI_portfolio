@@ -193,9 +193,9 @@
     },
     {
       "id": "cat-popup",
-      "navLabel": "오프라인",
+      "navLabel": "Offline",
       "tag": "Reels",
-      "title": "오프라인",
+      "title": "Offline",
       "layout": "reel",
       "clips": [
         "/media/popup-visit/domestic/teumgyeol-estherbunny.mp4",
