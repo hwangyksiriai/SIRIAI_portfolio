@@ -31,9 +31,9 @@
     },
     {
       "id": "cat-living",
-      "navLabel": "Life Style",
+      "navLabel": "Lifestyle",
       "tag": "Reels",
-      "title": "Life Style",
+      "title": "Lifestyle",
       "layout": "reel",
       "clips": [
         "/media/living-personal-care/bodywash.mp4",
