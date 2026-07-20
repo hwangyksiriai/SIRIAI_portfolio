@@ -63,8 +63,10 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 .wordmark .word{ font-family:var(--display); font-weight:600; font-size:16px; letter-spacing:.02em; color:var(--ink); }
 .wordmark .word-logo{ height:18px; width:auto; display:block; }
 
-.cat-nav-links{ display:flex; align-items:center; justify-content:space-between; gap:8px; overflow-x:auto; scrollbar-width:none; flex:1; }
+.cat-nav-links{ display:flex; align-items:center; justify-content:space-between; gap:24px; overflow-x:auto; scrollbar-width:none; flex:1; }
 .cat-nav-links::-webkit-scrollbar{ display:none; }
+.cat-nav-cats{ display:flex; align-items:center; gap:2px; flex:0 1 auto; }
+.cat-nav-external{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
 .cat-nav a{
   flex:0 0 auto; font-family:var(--mono); font-weight:600; font-size:16px; letter-spacing:.02em; text-transform:uppercase;
   color:var(--muted); text-decoration:none; padding:8px 14px; border-radius:999px; white-space:nowrap;
@@ -72,8 +74,14 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 }
 .cat-nav a:hover{ color:var(--ink); }
 .cat-nav a.active{ color:var(--ink); background:var(--accent-soft); }
-.cat-nav a.nav-external{ color:rgb(245,245,244); border:1px solid rgba(245,245,244,.28); }
-.cat-nav a.nav-external:hover{ background:rgba(245,245,244,.08); }
+.cat-nav a.nav-external{
+  display:inline-flex; align-items:center; gap:6px; font-weight:700; padding:9px 18px;
+  transition:filter .15s ease, transform .15s ease;
+}
+.cat-nav a.nav-external .arrow{ font-size:13px; }
+.cat-nav a.nav-external:hover{ filter:brightness(1.1); transform:translateY(-1px); }
+.cat-nav a.nav-external-gray{ background:#8a8a86; color:#14120e; }
+.cat-nav a.nav-external-white{ background:rgb(245,245,244); color:#14120e; }
 
 .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
 h1.disp{ font-family:var(--display); font-weight:600; letter-spacing:-.005em; line-height:1.1; margin:0; text-wrap:balance; }

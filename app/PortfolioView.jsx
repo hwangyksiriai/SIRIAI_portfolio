@@ -192,18 +192,22 @@ export default function PortfolioView({ config }) {
             <img className="word-logo" src={BRAND_LOGO} alt="Siriai" />
           </a>
           <div className="cat-nav-links">
-            {categories.map((cat) => (
-              <a
-                key={cat.id}
-                href={`#${cat.id}`}
-                className={activeCat === cat.id ? 'active' : ''}
-                onClick={(e) => { e.preventDefault(); goToCategory(cat.id); }}
-              >
-                {cat.navLabel}
-              </a>
-            ))}
-            <a className="nav-external" href="https://cd-study-deploy.vercel.app/" target="_blank" rel="noopener noreferrer">Homepage</a>
-            <a className="nav-external" href="https://siriai-business.vercel.app/" target="_blank" rel="noopener noreferrer">Business</a>
+            <div className="cat-nav-cats">
+              {categories.map((cat) => (
+                <a
+                  key={cat.id}
+                  href={`#${cat.id}`}
+                  className={activeCat === cat.id ? 'active' : ''}
+                  onClick={(e) => { e.preventDefault(); goToCategory(cat.id); }}
+                >
+                  {cat.navLabel}
+                </a>
+              ))}
+            </div>
+            <div className="cat-nav-external">
+              <a className="nav-external nav-external-gray" href="https://siriai-business.vercel.app/" target="_blank" rel="noopener noreferrer">Business <span className="arrow">↗</span></a>
+              <a className="nav-external nav-external-white" href="https://cd-study-deploy.vercel.app/" target="_blank" rel="noopener noreferrer">Homepage <span className="arrow">↗</span></a>
+            </div>
           </div>
         </div>
       </nav>
