@@ -167,9 +167,9 @@
     },
     {
       "id": "cat-health",
-      "navLabel": "Health & Wellness",
+      "navLabel": "Family & Kids",
       "tag": "Reels",
-      "title": "Health & Wellness",
+      "title": "Family & Kids",
       "layout": "reel",
       "clips": [
         "/media/health-wellness/brainology.mp4",
@@ -193,9 +193,9 @@
     },
     {
       "id": "cat-popup",
-      "navLabel": "Pop-up",
+      "navLabel": "오프라인",
       "tag": "Reels",
-      "title": "Pop-up",
+      "title": "오프라인",
       "layout": "reel",
       "clips": [
         "/media/popup-visit/domestic/teumgyeol-estherbunny.mp4",

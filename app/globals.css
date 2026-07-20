@@ -81,7 +81,6 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 }
 .cat-nav a.nav-external .arrow{ font-size:11px; }
 .cat-nav a.nav-external:hover{ filter:brightness(1.15); transform:translateY(-1px); }
-.cat-nav a.nav-external-gray{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); }
 .cat-nav a.nav-external-white{ background:rgba(255,255,255,.20); border:1px solid rgba(255,255,255,.35); }
 
 .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }

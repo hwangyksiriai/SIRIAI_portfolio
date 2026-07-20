@@ -205,7 +205,6 @@ export default function PortfolioView({ config }) {
               ))}
             </div>
             <div className="cat-nav-external">
-              <a className="nav-external nav-external-gray" href="https://siriai-business.vercel.app/" target="_blank" rel="noopener noreferrer">Business <span className="arrow">↗</span></a>
               <a className="nav-external nav-external-white" href="https://cd-study-deploy.vercel.app/" target="_blank" rel="noopener noreferrer">Home <span className="arrow">↗</span></a>
             </div>
           </div>
@@ -276,7 +275,7 @@ export default function PortfolioView({ config }) {
         <div className="hud-pill">↑ ↓ ARROW KEYS</div>
       </div>
 
-      <a className="contact-fab" href="mailto:jysiriai@gmail.com">Contact</a>
+      <a className="contact-fab" href="mailto:jysiriai@gmail.com">Contact <span className="arrow">↗</span></a>
     </>
   );
 }
