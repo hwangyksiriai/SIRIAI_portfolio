@@ -75,7 +75,7 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 
 .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
 h1.disp{ font-family:var(--display); font-weight:600; letter-spacing:-.005em; line-height:1.1; margin:0; text-wrap:balance; }
-p.lead{ font-size:19px; line-height:1.7; color:var(--muted); max-width:40ch; margin:16px 0 0; }
+p.lead{ font-size:21px; line-height:1.7; color:var(--muted); max-width:40ch; margin:20px 0 0; }
 
 /* Cover */
 .cover-top{ display:flex; justify-content:space-between; align-items:center; gap:56px; flex-wrap:wrap; max-width:1400px; margin-left:56px; }
@@ -116,7 +116,7 @@ p.lead{ font-size:19px; line-height:1.7; color:var(--muted); max-width:40ch; mar
 
 /* Segments index */
 .seg-grid{
-  margin-top:auto; margin-left:auto; width:58%; display:grid; grid-template-columns:repeat(3,1fr);
+  margin-top:100px; margin-left:auto; margin-bottom:auto; width:58%; display:grid; grid-template-columns:repeat(3,1fr);
   gap:48px 32px;
 }
 @media (max-width:900px){ .seg-grid{ width:100%; grid-template-columns:repeat(3,1fr); } }

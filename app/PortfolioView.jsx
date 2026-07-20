@@ -259,7 +259,7 @@ export default function PortfolioView({ config }) {
 
         {/* 03 SEGMENTS */}
         <section className="page">
-          <h1 className="disp" style={{ fontSize: 'clamp(36px,5.2vw,56px)' }}>Our Core<br />Campaign Segments</h1>
+          <h1 className="disp" style={{ fontSize: 'clamp(42px,6.2vw,68px)', marginTop: '48px' }}>Our Core<br />Campaign Segments</h1>
           <p className="lead">SIRIAI는 다양한 카테고리의 캠페인을 폭넓게 수행하며,<br />브랜드별 니즈에 맞춘 인플루언서 협업을 설계합니다.</p>
           <div className="seg-grid">
             {categories.map((cat, i) => (
