@@ -205,7 +205,7 @@ export default function PortfolioView({ config }) {
               ))}
             </div>
             <div className="cat-nav-external">
-              <a className="nav-external nav-external-white" href="https://cd-study-deploy.vercel.app/" target="_blank" rel="noopener noreferrer">Home <span className="arrow">↗</span></a>
+              <a className="nav-external nav-external-white" href="https://cd-study-deploy.vercel.app/" target="_blank" rel="noopener noreferrer">홈으로 이동 <span className="arrow">↗</span></a>
             </div>
           </div>
         </div>
