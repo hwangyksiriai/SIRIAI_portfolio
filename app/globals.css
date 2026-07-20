@@ -63,11 +63,11 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 .wordmark .word{ font-family:var(--display); font-weight:600; font-size:16px; letter-spacing:.02em; color:var(--ink); }
 .wordmark .word-logo{ height:18px; width:auto; display:block; }
 
-.cat-nav-links{ display:flex; align-items:center; gap:2px; overflow-x:auto; scrollbar-width:none; flex:1; }
+.cat-nav-links{ display:flex; align-items:center; justify-content:space-between; gap:8px; overflow-x:auto; scrollbar-width:none; flex:1; }
 .cat-nav-links::-webkit-scrollbar{ display:none; }
 .cat-nav a{
-  flex:0 0 auto; font-family:var(--mono); font-weight:600; font-size:14.5px; letter-spacing:.02em; text-transform:uppercase;
-  color:var(--muted); text-decoration:none; padding:6px 12px; border-radius:999px; white-space:nowrap;
+  flex:0 0 auto; font-family:var(--mono); font-weight:600; font-size:16px; letter-spacing:.02em; text-transform:uppercase;
+  color:var(--muted); text-decoration:none; padding:8px 14px; border-radius:999px; white-space:nowrap;
   cursor:pointer; transition:color .15s ease, background .15s ease;
 }
 .cat-nav a:hover{ color:var(--ink); }
