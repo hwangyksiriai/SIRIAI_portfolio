@@ -275,7 +275,7 @@ export default function PortfolioView({ config }) {
         <div className="hud-pill">↑ ↓ ARROW KEYS</div>
       </div>
 
-      <a className="contact-fab" href="mailto:jysiriai@gmail.com">Contact <span className="arrow">↗</span></a>
+      <a className="contact-fab" href="https://siriai-business.vercel.app/#contact" target="_blank" rel="noopener noreferrer">Contact <span className="arrow">↗</span></a>
     </>
   );
 }
