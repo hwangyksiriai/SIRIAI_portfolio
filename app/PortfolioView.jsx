@@ -114,7 +114,7 @@ export default function PortfolioView({ config }) {
   const [pageLabel, setPageLabel] = useState('01');
 
   const categories = config.categories;
-  const totalPages = 4 + categories.length; // cover, values, segments, contact + categories
+  const totalPages = 3 + categories.length; // cover, values, segments + categories
 
   function collectPages() {
     if (!deckRef.current) return [];
@@ -203,13 +203,6 @@ export default function PortfolioView({ config }) {
                 {cat.navLabel}
               </a>
             ))}
-            <a
-              href="#contact"
-              className={'nav-contact' + (activeCat === 'contact' ? ' active' : '')}
-              onClick={(e) => { e.preventDefault(); goToCategory('contact'); }}
-            >
-              Contact
-            </a>
           </div>
         </div>
       </nav>
@@ -265,30 +258,20 @@ export default function PortfolioView({ config }) {
                 <div className="name">{cat.navLabel}</div>
               </a>
             ))}
-            <a className="seg-cell seg-cell-contact" href="#contact" onClick={(e) => { e.preventDefault(); goToCategory('contact'); }}>
-              <SegIcon id="contact" />
-              <div className="name">Contact</div>
-            </a>
           </div>
         </section>
 
         {categories.map((cat, i) => (
           <CategorySection cat={cat} idx={1 + i} key={cat.id} />
         ))}
-
-        {/* Contact */}
-        <section className="page contact" id="contact">
-          <IdxTag label="CONTACT" />
-          <h1 className="disp" style={{ fontSize: 'clamp(30px,4.4vw,44px)' }}>Contact</h1>
-          <p className="lead">브랜드 캠페인 협업 문의는 아래 이메일로 연락해 주세요.<br />빠르게 확인 후 답변드리겠습니다.</p>
-          <a className="contact-email" href="mailto:jysiriai@gmail.com">jysiriai@gmail.com</a>
-        </section>
       </div>
 
       <div className="hud">
         <div className="hud-pill">{pageLabel} / {totalPages}</div>
         <div className="hud-pill">↑ ↓ ARROW KEYS</div>
       </div>
+
+      <a className="contact-fab" href="mailto:jysiriai@gmail.com">문의하기</a>
     </>
   );
 }
@@ -304,7 +287,6 @@ const ICONS = {
   'cat-health': <path d="M20.8 7.6c0 5-4.4 8-8.8 11.4C7.6 15.6 3.2 12.6 3.2 7.6a4.4 4.4 0 0 1 8-2.6 4.4 4.4 0 0 1 8 0 4.4 4.4 0 0 1 1.6 2.6Z" />,
   'cat-medical': <><path d="M12 3v6M9 6h6" /><rect x="4" y="9" width="16" height="12" rx="1.5" /><path d="M9 14h6M12 11v6" /></>,
   'cat-popup': <path d="M4 9l1-5h14l1 5M4 9v10h16V9M4 9h16M9 19v-6h6v6" />,
-  'contact': <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 6.5 8 6 8-6" /></>,
 };
 
 function SegIcon({ id }) {
