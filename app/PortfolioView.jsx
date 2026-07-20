@@ -174,7 +174,7 @@ export default function PortfolioView({ config }) {
         <div className="cat-nav-inner">
           <a className="wordmark" href="#" onClick={(e) => { e.preventDefault(); deckRef.current?.scrollTo({ top: 0, behavior: 'smooth' }); }}>
             <span className="mark"><img src={BRAND_SYMBOL} alt="" /></span>
-            <span className="word">SIRIAI</span>
+            <img className="word-logo" src={BRAND_LOGO} alt="Siriai" />
           </a>
           <div className="cat-nav-links">
             {categories.map((cat) => (
