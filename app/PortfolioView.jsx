@@ -156,12 +156,11 @@ export default function PortfolioView({ config }) {
 
     let wheelLocked = false;
     function onWheel(e) {
-      if (e.deltaY <= 0) return; // scrolling up stays free, no snapping
       e.preventDefault();
       if (wheelLocked) return;
       const pages = collectPages();
       const i = currentIndex();
-      const next = Math.min(i + 1, pages.length - 1);
+      const next = e.deltaY > 0 ? Math.min(i + 1, pages.length - 1) : Math.max(i - 1, 0);
       if (next === i) return;
       wheelLocked = true;
       pages[next].scrollIntoView({ behavior: 'smooth', block: 'start' });

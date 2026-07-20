@@ -33,7 +33,7 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 
 .idx-tag{ font-family:var(--mono); font-weight:700; font-size:18px; letter-spacing:.02em; color:var(--muted); margin:0 0 var(--sp-lg); display:flex; align-items:center; gap:10px; }
 .idx-tag .rule{ width:32px; height:1px; background:var(--line); display:inline-block; }
-.idx-tag .accent{ color:var(--accent); }
+.idx-tag .accent{ color:rgba(245,245,245,.5); }
 
 .hud{
   position:fixed; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center;
@@ -66,7 +66,7 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 .cat-nav-links{ display:flex; align-items:center; gap:2px; overflow-x:auto; scrollbar-width:none; flex:1; }
 .cat-nav-links::-webkit-scrollbar{ display:none; }
 .cat-nav a{
-  flex:0 0 auto; font-family:var(--mono); font-weight:600; font-size:12.5px; letter-spacing:.02em; text-transform:uppercase;
+  flex:0 0 auto; font-family:var(--mono); font-weight:600; font-size:14.5px; letter-spacing:.02em; text-transform:uppercase;
   color:var(--muted); text-decoration:none; padding:6px 12px; border-radius:999px; white-space:nowrap;
   cursor:pointer; transition:color .15s ease, background .15s ease;
 }
@@ -110,7 +110,7 @@ p.lead{ font-size:21px; line-height:1.7; color:var(--muted); max-width:560px; ma
   display:inline-flex; align-items:center; gap:8px;
   background:rgba(255,255,255,.06); backdrop-filter:blur(5px) saturate(1.15); -webkit-backdrop-filter:blur(5px) saturate(1.15);
   border:1px solid rgba(255,255,255,.22); border-radius:100px; box-shadow:0 8px 30px -16px rgba(0,0,0,.5);
-  padding:15px 28px; color:#f4f4f3; font-family:var(--body); font-weight:600; font-size:15px; letter-spacing:-.15px;
+  padding:19px 36px; color:#f4f4f3; font-family:var(--body); font-weight:600; font-size:18px; letter-spacing:-.15px;
   text-decoration:none; transition:background .2s ease, transform .2s ease;
 }
 .contact-fab:hover{ background:rgba(255,255,255,.12); transform:translateY(-2px); }
