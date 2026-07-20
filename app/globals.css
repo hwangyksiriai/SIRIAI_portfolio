@@ -116,7 +116,7 @@ p.lead{ font-size:21px; line-height:1.7; color:var(--muted); max-width:40ch; mar
 
 /* Segments index */
 .seg-grid{
-  margin-top:100px; margin-left:auto; margin-bottom:auto; width:58%; display:grid; grid-template-columns:repeat(3,1fr);
+  margin-top:220px; margin-left:auto; margin-bottom:auto; width:58%; display:grid; grid-template-columns:repeat(3,1fr);
   gap:48px 32px;
 }
 @media (max-width:900px){ .seg-grid{ width:100%; grid-template-columns:repeat(3,1fr); } }
