@@ -110,7 +110,7 @@ function CategorySection({ cat, idx }) {
 export default function PortfolioView({ config }) {
   const deckRef = useRef(null);
   const pageRefs = useRef([]);
-  const [activeCat, setActiveCat] = useState(config.categories[0]?.id);
+  const [activeCat, setActiveCat] = useState(null);
   const [pageLabel, setPageLabel] = useState('01');
 
   const categories = config.categories;
