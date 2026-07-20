@@ -40,8 +40,8 @@ function Clip({ src, landscape }) {
 function IdxTag({ n, label }) {
   return (
     <div className="idx-tag">
-      <span className="accent">{String(n).padStart(2, '0')}</span>
-      <span className="rule"></span>
+      {n != null && <span className="accent">{String(n).padStart(2, '0')}</span>}
+      {n != null && <span className="rule"></span>}
       <span>{label}</span>
     </div>
   );
@@ -234,7 +234,7 @@ export default function PortfolioView({ config }) {
 
         {/* 02 VALUES */}
         <section className="page">
-          <h1 className="disp" style={{ fontSize: 'clamp(42px,6.2vw,68px)' }}>Curating Creators,<br />Elevating Brands</h1>
+          <h1 className="disp" style={{ fontSize: 'clamp(42px,6.2vw,68px)', marginTop: '48px' }}>Curating Creators,<br />Elevating Brands</h1>
           <div className="values-grid">
             <div className="value-card">
               <div className="still"><img src="/media/value-1.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
@@ -278,7 +278,7 @@ export default function PortfolioView({ config }) {
 
         {/* Contact */}
         <section className="page contact" id="contact">
-          <IdxTag n={1 + categories.length} label="CONTACT" />
+          <IdxTag label="CONTACT" />
           <h1 className="disp" style={{ fontSize: 'clamp(30px,4.4vw,44px)' }}>Let's Work<br />Together</h1>
           <p className="lead">브랜드 캠페인 협업 문의는 아래 이메일로 연락해 주세요.<br />빠르게 확인 후 답변드리겠습니다.</p>
           <a className="contact-email" href="mailto:jysiriai@gmail.com">jysiriai@gmail.com</a>
