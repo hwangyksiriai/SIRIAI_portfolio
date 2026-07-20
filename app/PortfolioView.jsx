@@ -154,11 +154,27 @@ export default function PortfolioView({ config }) {
       pages[next].scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    let wheelLocked = false;
+    function onWheel(e) {
+      if (e.deltaY <= 0) return; // scrolling up stays free, no snapping
+      e.preventDefault();
+      if (wheelLocked) return;
+      const pages = collectPages();
+      const i = currentIndex();
+      const next = Math.min(i + 1, pages.length - 1);
+      if (next === i) return;
+      wheelLocked = true;
+      pages[next].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => { wheelLocked = false; }, 700);
+    }
+
     deck.addEventListener('scroll', update, { passive: true });
+    deck.addEventListener('wheel', onWheel, { passive: false });
     window.addEventListener('keydown', onKeydown);
     update();
     return () => {
       deck.removeEventListener('scroll', update);
+      deck.removeEventListener('wheel', onWheel);
       window.removeEventListener('keydown', onKeydown);
     };
   }, []);

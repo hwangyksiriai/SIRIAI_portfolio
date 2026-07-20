@@ -10,7 +10,7 @@
   --scrim: rgba(22,19,16,.72);
   --display: "Helvetica Neue", Helvetica, Arial, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --body: "Helvetica Neue", Helvetica, Arial, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --mono: "SFMono-Regular", "Consolas", "Menlo", monospace;
+  --mono: "Helvetica Neue", Helvetica, Arial, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --jp: "Noto Sans JP", sans-serif;
   --content-max: 1800px;
   --pad-x: 72px;
@@ -22,9 +22,9 @@
 html,body{ margin:0; padding:0; }
 body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-x:hidden; }
 
-.deck{ scroll-snap-type:y proximity; overflow-y:auto; height:100vh; scroll-behavior:smooth; }
+.deck{ overflow-y:auto; height:100vh; scroll-behavior:smooth; }
 .page{
-  scroll-snap-align:start; min-height:100vh; position:relative;
+  min-height:100vh; position:relative;
   padding:var(--pad-y) var(--pad-x) 90px; display:flex; flex-direction:column;
   border-bottom:1px solid var(--line);
   max-width:var(--content-max); margin:0 auto;
