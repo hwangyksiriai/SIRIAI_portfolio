@@ -10,20 +10,20 @@
           "key": "domestic",
           "label": "국내",
           "clips": [
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/beauty/lee-jerin.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/beauty/yoon-hyerin.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/beauty/kim-hani.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/beauty/hyeonmyeong-2.mp4"
+            "/media/beauty/lee-jerin.mp4",
+            "/media/beauty/yoon-hyerin.mp4",
+            "/media/beauty/kim-hani.mp4",
+            "/media/beauty/hyeonmyeong-2.mp4"
           ]
         },
         {
           "key": "abroad",
           "label": "해외",
           "clips": [
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/beauty/abroad-1.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/beauty/abroad-2.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/beauty/abroad-3.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/beauty/abroad-4.mp4"
+            "/media/beauty/abroad-1.mp4",
+            "/media/beauty/abroad-2.mp4",
+            "/media/beauty/abroad-3.mp4",
+            "/media/beauty/abroad-4.mp4"
           ]
         }
       ]
@@ -34,10 +34,10 @@
       "title": "Life Style",
       "layout": "reel",
       "clips": [
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/living-personal-care/bodywash.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/living-personal-care/kim-sehyun.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/living-personal-care/yoon-yeongeun.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/living-personal-care/diffuser-2.mp4"
+        "/media/living-personal-care/bodywash.mp4",
+        "/media/living-personal-care/kim-sehyun.mp4",
+        "/media/living-personal-care/yoon-yeongeun.mp4",
+        "/media/living-personal-care/diffuser-2.mp4"
       ]
     },
     {
@@ -50,20 +50,20 @@
           "key": "domestic",
           "label": "국내",
           "clips": [
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fashion/domestic/rooab.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fashion/domestic/kim-minji.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fashion/domestic/park-nayeon.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fashion/domestic/dear.mp4"
+            "/media/fashion/domestic/rooab.mp4",
+            "/media/fashion/domestic/kim-minji.mp4",
+            "/media/fashion/domestic/park-nayeon.mp4",
+            "/media/fashion/domestic/dear.mp4"
           ]
         },
         {
           "key": "abroad",
           "label": "해외",
           "clips": [
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fashion/abroad/greencontinue-1.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fashion/abroad/greencontinue-2.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fashion/abroad/greencontinue-3.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fashion/abroad/greencontinue-4.mp4"
+            "/media/fashion/abroad/greencontinue-1.mp4",
+            "/media/fashion/abroad/greencontinue-2.mp4",
+            "/media/fashion/abroad/greencontinue-3.mp4",
+            "/media/fashion/abroad/greencontinue-4.mp4"
           ]
         }
       ]
@@ -78,20 +78,20 @@
           "key": "domestic",
           "label": "국내",
           "clips": [
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/travel-tourism/domestic/oh-youngju.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/travel-tourism/domestic/jongwoo-gallery.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/travel-tourism/domestic/chaerrier.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/travel-tourism/domestic/yekong.mp4"
+            "/media/travel-tourism/domestic/oh-youngju.mp4",
+            "/media/travel-tourism/domestic/jongwoo-gallery.mp4",
+            "/media/travel-tourism/domestic/chaerrier.mp4",
+            "/media/travel-tourism/domestic/yekong.mp4"
           ]
         },
         {
           "key": "abroad",
           "label": "해외",
           "clips": [
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/travel-tourism/abroad/reichan.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/travel-tourism/abroad/phatthararwee.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/travel-tourism/abroad/yun-ling-he.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/travel-tourism/abroad/kanaka.mp4"
+            "/media/travel-tourism/abroad/reichan.mp4",
+            "/media/travel-tourism/abroad/phatthararwee.mp4",
+            "/media/travel-tourism/abroad/yun-ling-he.mp4",
+            "/media/travel-tourism/abroad/kanaka.mp4"
           ]
         }
       ]
@@ -102,10 +102,10 @@
       "title": "F&B",
       "layout": "reel",
       "clips": [
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fnb/life4cuts.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fnb/harim-nyc.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fnb/harim-thaifex-1.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/fnb/harim-thaifex-2.mp4"
+        "/media/fnb/life4cuts.mp4",
+        "/media/fnb/harim-nyc.mp4",
+        "/media/fnb/harim-thaifex-1.mp4",
+        "/media/fnb/harim-thaifex-2.mp4"
       ]
     },
     {
@@ -118,30 +118,30 @@
           "key": "japan",
           "label": "일본",
           "clips": [
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EC%9D%BC%EB%B3%B8/clip-1.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EC%9D%BC%EB%B3%B8/clip-2.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EC%9D%BC%EB%B3%B8/clip-3.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EC%9D%BC%EB%B3%B8/clip-4.mp4"
+            "/media/artist-promotion/%EC%9D%BC%EB%B3%B8/clip-1.mp4",
+            "/media/artist-promotion/%EC%9D%BC%EB%B3%B8/clip-2.mp4",
+            "/media/artist-promotion/%EC%9D%BC%EB%B3%B8/clip-3.mp4",
+            "/media/artist-promotion/%EC%9D%BC%EB%B3%B8/clip-4.mp4"
           ]
         },
         {
           "key": "southeast-asia",
           "label": "동남아",
           "clips": [
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EB%8F%99%EB%82%A8%EC%95%84/clip-1.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EB%8F%99%EB%82%A8%EC%95%84/clip-2.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EB%8F%99%EB%82%A8%EC%95%84/clip-3.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EB%8F%99%EB%82%A8%EC%95%84/clip-4.mp4"
+            "/media/artist-promotion/%EB%8F%99%EB%82%A8%EC%95%84/clip-1.mp4",
+            "/media/artist-promotion/%EB%8F%99%EB%82%A8%EC%95%84/clip-2.mp4",
+            "/media/artist-promotion/%EB%8F%99%EB%82%A8%EC%95%84/clip-3.mp4",
+            "/media/artist-promotion/%EB%8F%99%EB%82%A8%EC%95%84/clip-4.mp4"
           ]
         },
         {
           "key": "north-america",
           "label": "북미",
           "clips": [
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EB%B6%81%EB%AF%B8/clip-1.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EB%B6%81%EB%AF%B8/clip-2.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EB%B6%81%EB%AF%B8/clip-3.mp4",
-            "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/artist-promotion/%EB%B6%81%EB%AF%B8/clip-4.mp4"
+            "/media/artist-promotion/%EB%B6%81%EB%AF%B8/clip-1.mp4",
+            "/media/artist-promotion/%EB%B6%81%EB%AF%B8/clip-2.mp4",
+            "/media/artist-promotion/%EB%B6%81%EB%AF%B8/clip-3.mp4",
+            "/media/artist-promotion/%EB%B6%81%EB%AF%B8/clip-4.mp4"
           ]
         }
       ]
@@ -152,10 +152,10 @@
       "title": "Celebrity & Magazine",
       "layout": "reel",
       "clips": [
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/celebrity-promotion/magazine.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/celebrity-promotion/depenue-1.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/celebrity-promotion/depenue-2.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/celebrity-promotion/depenue-3.mp4"
+        "/media/celebrity-promotion/magazine.mp4",
+        "/media/celebrity-promotion/depenue-1.mp4",
+        "/media/celebrity-promotion/depenue-2.mp4",
+        "/media/celebrity-promotion/depenue-3.mp4"
       ]
     },
     {
@@ -164,10 +164,10 @@
       "title": "Health & Wellness",
       "layout": "reel",
       "clips": [
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/health-wellness/brainology.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/health-wellness/english-routine.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/health-wellness/clip-1.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/health-wellness/clip-2.mp4"
+        "/media/health-wellness/brainology.mp4",
+        "/media/health-wellness/english-routine.mp4",
+        "/media/health-wellness/clip-1.mp4",
+        "/media/health-wellness/clip-2.mp4"
       ]
     },
     {
@@ -176,10 +176,10 @@
       "title": "Medical",
       "layout": "reel",
       "clips": [
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/medical/ID_jessica.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/medical/kim-nahyun.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/medical/kim-jaeeun.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/medical/jang-geonwoo.mp4"
+        "/media/medical/ID_jessica.mp4",
+        "/media/medical/kim-nahyun.mp4",
+        "/media/medical/kim-jaeeun.mp4",
+        "/media/medical/jang-geonwoo.mp4"
       ]
     },
     {
@@ -188,10 +188,10 @@
       "title": "Popup Visit",
       "layout": "reel",
       "clips": [
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/popup-visit/domestic/teumgyeol-estherbunny.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/popup-visit/domestic/kim-nayoung.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/popup-visit/domestic/tocobo.mp4",
-        "https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/popup-visit/domestic/jia.mp4"
+        "/media/popup-visit/domestic/teumgyeol-estherbunny.mp4",
+        "/media/popup-visit/domestic/kim-nayoung.mp4",
+        "/media/popup-visit/domestic/tocobo.mp4",
+        "/media/popup-visit/domestic/jia.mp4"
       ]
     }
   ]

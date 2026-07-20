@@ -2,15 +2,34 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const BRAND_SYMBOL = 'https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/brand/symbol.png';
-const BRAND_LOGO = 'https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/brand/logo-white.png';
+const BRAND_SYMBOL = '/media/brand/symbol.png';
+const BRAND_LOGO = '/media/brand/logo-white.png';
 
 function Clip({ src, landscape }) {
   const cls = 'clip' + (landscape ? ' landscape' : '') + (src ? '' : ' empty');
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (!src || !ref.current) return;
+    const el = ref.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '400px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [src]);
+
   return (
-    <div className={cls}>
+    <div className={cls} ref={ref}>
       {src ? (
-        <video className="fill" src={src} autoPlay muted loop playsInline />
+        visible && <video className="fill" src={src} autoPlay muted loop playsInline />
       ) : (
         <span className="slot-msg"><span className="plus">+</span><span className="label">준비중</span></span>
       )}
@@ -187,7 +206,7 @@ export default function PortfolioView({ config }) {
             </div>
           </div>
           <div className="cover-still">
-            <img className="fill" src="https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/cover.png" alt="" onError={(e) => e.currentTarget.remove()} />
+            <img className="fill" src="/media/cover.png" alt="" onError={(e) => e.currentTarget.remove()} />
           </div>
         </section>
 
@@ -197,19 +216,19 @@ export default function PortfolioView({ config }) {
           <h1 className="disp" style={{ fontSize: 'clamp(28px,4vw,44px)' }}>Curating Creators,<br />Elevating Brands</h1>
           <div className="values-grid">
             <div className="value-card">
-              <div className="still"><img src="https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/value-1.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
+              <div className="still"><img src="/media/value-1.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
               <p className="num">01</p>
               <h3>Mood-Centric Curation</h3>
               <p>브랜드에 딱 맞는 크리에이터를 선별해, 브랜드의 가치를 더 높여드립니다.</p>
             </div>
             <div className="value-card">
-              <div className="still"><img src="https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/value-2.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
+              <div className="still"><img src="/media/value-2.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
               <p className="num">02</p>
               <h3>AI-Driven Discovery</h3>
               <p>AI 시스템을 통해 신규 인플루언서를 지속적으로 발굴합니다.</p>
             </div>
             <div className="value-card">
-              <div className="still"><img src="https://a0ag8zyq9ymtggl2.public.blob.vercel-storage.com/media/value-3.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
+              <div className="still"><img src="/media/value-3.png" alt="" onError={(e) => e.currentTarget.remove()} /></div>
               <p className="num">03</p>
               <h3>Premium Content Quality</h3>
               <p>합리적 고효율 · 높은 영상 퀄리티로 캠페인마다 중복 없는 풀을 설계합니다.</p>
