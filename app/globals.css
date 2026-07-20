@@ -22,9 +22,9 @@
 html,body{ margin:0; padding:0; }
 body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-x:hidden; }
 
-.deck{ overflow-y:auto; height:100vh; scroll-behavior:smooth; }
+.deck{ scroll-snap-type:y proximity; overflow-y:auto; height:100vh; scroll-behavior:smooth; }
 .page{
-  min-height:100vh; position:relative;
+  scroll-snap-align:start; min-height:100vh; position:relative;
   padding:var(--pad-y) var(--pad-x) 90px; display:flex; flex-direction:column;
   border-bottom:1px solid var(--line);
   max-width:var(--content-max); margin:0 auto;
