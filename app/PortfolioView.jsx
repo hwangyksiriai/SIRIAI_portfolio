@@ -205,7 +205,7 @@ export default function PortfolioView({ config }) {
             ))}
             <a
               href="#contact"
-              className={activeCat === 'contact' ? 'active' : ''}
+              className={'nav-contact' + (activeCat === 'contact' ? ' active' : '')}
               onClick={(e) => { e.preventDefault(); goToCategory('contact'); }}
             >
               Contact
@@ -265,7 +265,7 @@ export default function PortfolioView({ config }) {
                 <div className="name">{cat.navLabel}</div>
               </a>
             ))}
-            <a className="seg-cell" href="#contact" onClick={(e) => { e.preventDefault(); goToCategory('contact'); }}>
+            <a className="seg-cell seg-cell-contact" href="#contact" onClick={(e) => { e.preventDefault(); goToCategory('contact'); }}>
               <SegIcon id="contact" />
               <div className="name">Contact</div>
             </a>

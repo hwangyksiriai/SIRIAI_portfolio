@@ -72,6 +72,9 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 }
 .cat-nav a:hover{ color:var(--ink); }
 .cat-nav a.active{ color:var(--ink); background:var(--accent-soft); }
+.cat-nav a.nav-contact{ color:var(--accent); }
+.cat-nav a.nav-contact:hover{ color:var(--ink); }
+.cat-nav a.nav-contact.active{ color:var(--ink); }
 
 .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
 h1.disp{ font-family:var(--display); font-weight:600; letter-spacing:-.005em; line-height:1.1; margin:0; text-wrap:balance; }
@@ -126,6 +129,8 @@ p.lead{ font-size:21px; line-height:1.7; color:var(--muted); max-width:560px; ma
 }
 .seg-cell svg{ width:28px; height:28px; stroke:var(--muted); stroke-width:1.3; transition:stroke .15s ease; }
 .seg-cell .name{ font-family:var(--display); font-weight:500; font-size:14.5px; letter-spacing:0; color:var(--ink); transition:color .15s ease; }
+.seg-cell-contact svg{ stroke:var(--accent); }
+.seg-cell-contact .name{ color:var(--accent); }
 .seg-cell:hover svg{ stroke:var(--accent); }
 .seg-cell:hover .name{ color:var(--accent); }
 
