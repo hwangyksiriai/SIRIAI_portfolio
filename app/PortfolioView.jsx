@@ -271,7 +271,7 @@ export default function PortfolioView({ config }) {
         <div className="hud-pill">↑ ↓ ARROW KEYS</div>
       </div>
 
-      <a className="contact-fab" href="mailto:jysiriai@gmail.com">문의하기</a>
+      <a className="contact-fab" href="mailto:jysiriai@gmail.com">Contact</a>
     </>
   );
 }
