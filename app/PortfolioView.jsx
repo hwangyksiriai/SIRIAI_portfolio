@@ -210,7 +210,6 @@ export default function PortfolioView({ config }) {
       <div className="deck" id="deck" ref={deckRef}>
         {/* 01 COVER */}
         <section className="page cover">
-          <IdxTag n={1} label="COVER" />
           <div className="cover-top">
             <div className="cover-title">
               <img className="cover-logo" src={BRAND_LOGO} alt="Siriai" />
@@ -228,7 +227,6 @@ export default function PortfolioView({ config }) {
 
         {/* 02 VALUES */}
         <section className="page">
-          <IdxTag n={2} label="VALUES" />
           <h1 className="disp" style={{ fontSize: 'clamp(28px,4vw,44px)' }}>Curating Creators,<br />Elevating Brands</h1>
           <div className="values-grid">
             <div className="value-card">
@@ -254,13 +252,11 @@ export default function PortfolioView({ config }) {
 
         {/* 03 SEGMENTS */}
         <section className="page">
-          <IdxTag n={3} label="SEGMENTS" />
-          <h1 className="disp" style={{ fontSize: 'clamp(30px,4.4vw,44px)' }}>Our Core<br />Campaign Segments</h1>
+          <h1 className="disp" style={{ fontSize: 'clamp(36px,5.2vw,56px)' }}>Our Core<br />Campaign Segments</h1>
           <p className="lead">SIRIAI는 다양한 카테고리의 캠페인을 폭넓게 수행하며,<br />브랜드별 니즈에 맞춘 인플루언서 협업을 설계합니다.</p>
           <div className="seg-grid">
             {categories.map((cat, i) => (
               <a className="seg-cell" href={`#${cat.id}`} key={cat.id} onClick={(e) => { e.preventDefault(); goToCategory(cat.id); }}>
-                <span className="seg-num">{String(i + 1).padStart(2, '0')}</span>
                 <SegIcon id={cat.id} />
                 <div className="name">{cat.navLabel}</div>
               </a>
@@ -269,12 +265,12 @@ export default function PortfolioView({ config }) {
         </section>
 
         {categories.map((cat, i) => (
-          <CategorySection cat={cat} idx={4 + i} key={cat.id} />
+          <CategorySection cat={cat} idx={1 + i} key={cat.id} />
         ))}
 
         {/* Contact */}
         <section className="page contact">
-          <IdxTag n={4 + categories.length} label="CONTACT" />
+          <IdxTag n={1 + categories.length} label="CONTACT" />
           <h1 className="disp" style={{ fontSize: 'clamp(30px,4.4vw,44px)' }}>Let's Work<br />Together</h1>
           <p className="lead">브랜드 캠페인 협업 문의는 아래 이메일로 연락해 주세요.<br />빠르게 확인 후 답변드리겠습니다.</p>
           <a className="contact-email" href="mailto:jysiriai@gmail.com">jysiriai@gmail.com</a>
