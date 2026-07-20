@@ -31,7 +31,7 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 }
 @media (max-width:720px){ .page{ padding:96px 22px 88px; } }
 
-.idx-tag{ font-family:var(--mono); font-weight:700; font-size:25px; letter-spacing:.14em; color:var(--muted); margin:0 0 var(--sp-lg); display:flex; align-items:center; gap:10px; }
+.idx-tag{ font-family:var(--mono); font-weight:700; font-size:18px; letter-spacing:.14em; color:var(--muted); margin:0 0 var(--sp-lg); display:flex; align-items:center; gap:10px; }
 .idx-tag .rule{ width:32px; height:1px; background:var(--line); display:inline-block; }
 .idx-tag .accent{ color:var(--accent); }
 
