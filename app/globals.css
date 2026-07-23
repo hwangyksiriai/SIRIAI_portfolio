@@ -20,7 +20,14 @@
 }
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
-body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-x:hidden; }
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--body); overflow-x:hidden;
+  word-break:keep-all; overflow-wrap:break-word;
+}
+
+/* Desktop-only manual line breaks in Korean copy; hidden so word-break:keep-all
+   can reflow naturally at narrow widths instead of wrapping mid-phrase. */
+@media (max-width:720px){ br.brk{ display:none; } }
 
 .deck{ scroll-snap-type:y proximity; overflow-y:auto; height:100vh; scroll-behavior:smooth; }
 .page{
@@ -91,7 +98,8 @@ body{ background:var(--bg); color:var(--ink); font-family:var(--body); overflow-
 
 .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
 h1.disp{ font-family:var(--display); font-weight:600; letter-spacing:-.005em; line-height:1.1; margin:0; text-wrap:balance; }
-p.lead{ font-size:21px; line-height:1.7; color:var(--muted); max-width:560px; margin:20px 0 0; }
+p.lead{ font-size:21px; line-height:1.7; letter-spacing:-.01em; color:var(--muted); max-width:560px; margin:20px 0 0; }
+@media (max-width:720px){ p.lead{ font-size:16px; line-height:1.6; max-width:100%; } }
 
 /* Cover */
 .cover-top{ display:flex; justify-content:flex-start; align-items:flex-start; gap:0; flex-wrap:wrap; max-width:2000px; margin-top:48px; }
@@ -100,15 +108,15 @@ p.lead{ font-size:21px; line-height:1.7; color:var(--muted); max-width:560px; ma
 .cover-logo{ height:clamp(44px,6.5vw,80px); width:auto; display:block; }
 .cover-title .jp{ font-family:var(--jp); font-weight:700; color:var(--muted); font-size:23px; }
 .cover-copy{ max-width:640px; min-width:min(640px,100%); flex:0 1 auto; padding-top:6px; margin-left:862px; }
-.cover-copy p.primary{ font-size:20px; font-weight:600; line-height:1.6; color:var(--ink); margin:0 0 18px; }
-.cover-copy p.secondary{ font-size:16px; line-height:1.75; color:var(--muted); margin:0; }
+.cover-copy p.primary{ font-size:20px; font-weight:600; line-height:1.6; letter-spacing:-.01em; color:var(--ink); margin:0 0 18px; }
+.cover-copy p.secondary{ font-size:16px; line-height:1.75; letter-spacing:-.01em; color:var(--muted); margin:0; }
 @media (max-width:900px){ .cover-copy{ margin-left:0; } }
 @media (max-width:720px){
   .cover-copy{ max-width:100%; }
   .cover-top{ margin-top:28px; }
   .cover-title .jp{ font-size:16px; }
-  .cover-copy p.primary{ font-size:17px; }
-  .cover-copy p.secondary{ font-size:14px; }
+  .cover-copy p.primary{ font-size:17px; line-height:1.55; }
+  .cover-copy p.secondary{ font-size:14px; line-height:1.7; }
 }
 .cover-still{
   margin-top:auto; width:100%; border-radius:6px; overflow:hidden; position:relative;
@@ -125,7 +133,8 @@ p.lead{ font-size:21px; line-height:1.7; color:var(--muted); max-width:560px; ma
 .value-card .still{ width:100%; aspect-ratio:3.6/1; border-radius:16px; margin-bottom:18px; overflow:hidden; position:relative; background:var(--card); border:1px solid var(--line); }
 .value-card .still img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .value-card h3{ font-family:var(--display); font-weight:600; font-size:21px; margin:0 0 9px; letter-spacing:0; }
-.value-card p{ font-size:16px; line-height:1.65; color:var(--muted); margin:0; max-width:330px; }
+.value-card p{ font-size:16px; line-height:1.65; letter-spacing:-.01em; color:var(--muted); margin:0; max-width:330px; }
+@media (max-width:720px){ .value-card p{ font-size:14.5px; line-height:1.6; } }
 
 /* Floating contact button */
 .contact-fab{
