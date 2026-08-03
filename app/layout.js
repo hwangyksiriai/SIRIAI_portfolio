@@ -2,6 +2,9 @@ import './globals.css';
 
 export const metadata = {
   title: 'SIRIAI Portfolio',
+  alternates: {
+    canonical: 'https://siriai.co.kr/portfolio',
+  },
 };
 
 export default function RootLayout({ children }) {
