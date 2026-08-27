@@ -200,6 +200,16 @@ p.lead{ font-size:21px; line-height:1.7; letter-spacing:-.01em; color:var(--mute
 .reel-strip .clip{ aspect-ratio:9/16; }
 @media (max-width:900px){ .reel-strip{ grid-template-columns:repeat(2,1fr); } }
 
+/* More than one row of reels: cap each clip's height to the available
+   viewport instead of letting the fixed aspect-ratio push the grid
+   past the page and under the fixed HUD. */
+.reel-strip:has(.clip:nth-child(5)){ display:flex; flex-wrap:wrap; justify-content:flex-start; }
+.reel-strip:has(.clip:nth-child(5)) .clip{ aspect-ratio:9/16; height:min(30vh,300px); width:auto; flex:0 0 auto; }
+@media (max-width:900px){
+  .reel-strip:has(.clip:nth-child(5)){ justify-content:center; }
+  .reel-strip:has(.clip:nth-child(5)) .clip{ height:min(24vh,240px); }
+}
+
 .travel-grid{ grid-column:1/-1; align-self:start; display:flex; gap:var(--sp-md); justify-content:center; }
 .travel-col{ display:flex; flex-direction:column; gap:var(--sp-md); }
 .clip.landscape{ height:32vh; aspect-ratio:16/9; width:auto; flex:0 0 auto; }

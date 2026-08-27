@@ -30,6 +30,62 @@
       ]
     },
     {
+      "id": "cat-beauty-2",
+      "navLabel": "Beauty",
+      "tag": "Reels",
+      "title": "Beauty",
+      "layout": "reel",
+      "hideFromNav": true,
+      "clips": [
+        "/media/beauty/beauty-clip-01.mp4",
+        "/media/beauty/beauty-clip-02.mp4",
+        "/media/beauty/beauty-clip-03.mp4",
+        "/media/beauty/beauty-clip-04.mp4"
+      ]
+    },
+    {
+      "id": "cat-beauty-3",
+      "navLabel": "Beauty",
+      "tag": "Reels",
+      "title": "Beauty",
+      "layout": "reel",
+      "hideFromNav": true,
+      "clips": [
+        "/media/beauty/beauty-clip-05.mp4",
+        "/media/beauty/beauty-clip-06.mp4",
+        "/media/beauty/beauty-clip-07.mp4",
+        "/media/beauty/beauty-clip-08.mp4"
+      ]
+    },
+    {
+      "id": "cat-beauty-4",
+      "navLabel": "Beauty",
+      "tag": "Reels",
+      "title": "Beauty",
+      "layout": "reel",
+      "hideFromNav": true,
+      "clips": [
+        "/media/beauty/beauty-clip-09.mp4",
+        "/media/beauty/beauty-clip-10.mp4",
+        "/media/beauty/beauty-clip-11.mp4",
+        "/media/beauty/beauty-clip-12.mp4"
+      ]
+    },
+    {
+      "id": "cat-beauty-5",
+      "navLabel": "Beauty",
+      "tag": "Reels",
+      "title": "Beauty",
+      "layout": "reel",
+      "hideFromNav": true,
+      "clips": [
+        "/media/beauty/kim-minji.mp4",
+        "/media/beauty/park-minseo.mp4",
+        "/media/beauty/shin-jieun.mp4",
+        "/media/beauty/jang-sohee.mp4"
+      ]
+    },
+    {
       "id": "cat-living",
       "navLabel": "Lifestyle",
       "tag": "Reels",

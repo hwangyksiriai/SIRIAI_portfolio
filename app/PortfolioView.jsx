@@ -114,6 +114,7 @@ export default function PortfolioView({ config }) {
   const [pageLabel, setPageLabel] = useState('01');
 
   const categories = config.categories;
+  const navCategories = categories.filter((cat) => !cat.hideFromNav);
   const totalPages = 3 + categories.length; // cover, values, segments + categories
 
   function collectPages() {
@@ -142,7 +143,7 @@ export default function PortfolioView({ config }) {
       const i = currentIndex();
       setPageLabel(String(i + 1).padStart(2, '0'));
       const id = pages[i]?.id;
-      if (id) setActiveCat(id);
+      if (id) setActiveCat(id.replace(/-\d+$/, ''));
     }
 
     function onKeydown(e) {
@@ -193,7 +194,7 @@ export default function PortfolioView({ config }) {
           </a>
           <div className="cat-nav-links">
             <div className="cat-nav-cats">
-              {categories.map((cat) => (
+              {navCategories.map((cat) => (
                 <a
                   key={cat.id}
                   href={`#${cat.id}`}
@@ -256,7 +257,7 @@ export default function PortfolioView({ config }) {
           <h1 className="disp" style={{ fontSize: 'clamp(34px,4vw + 3vh,68px)', marginTop: '48px' }}>Our Core<br />Campaign Segments</h1>
           <p className="lead">SIRIAI는 다양한 카테고리의 캠페인을 폭넓게 수행하며,<br className="brk" />브랜드별 니즈에 맞춘 인플루언서 협업을 설계합니다.</p>
           <div className="seg-grid">
-            {categories.map((cat, i) => (
+            {navCategories.map((cat, i) => (
               <a className="seg-cell" href={`#${cat.id}`} key={cat.id} onClick={(e) => { e.preventDefault(); goToCategory(cat.id); }}>
                 <SegIcon id={cat.id} />
                 <div className="name">{cat.navLabel}</div>
