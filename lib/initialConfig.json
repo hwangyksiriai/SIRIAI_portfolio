@@ -113,15 +113,6 @@
       "clips": []
     },
     {
-      "id": "cat-beauty-9",
-      "navLabel": "Beauty",
-      "tag": "Reels",
-      "title": "Beauty",
-      "layout": "reel",
-      "hideFromNav": true,
-      "clips": []
-    },
-    {
       "id": "cat-fashion",
       "navLabel": "Fashion",
       "tag": "Reels",
