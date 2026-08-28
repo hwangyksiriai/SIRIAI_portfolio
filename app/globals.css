@@ -231,3 +231,55 @@ p.lead{ font-size:21px; line-height:1.7; letter-spacing:-.01em; color:var(--mute
 .clip.empty .slot-msg span.label{ font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.03em; text-transform:uppercase; text-align:center; padding:0 10px; }
 
 .cat-foot{ margin-top:20px; font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.03em; }
+
+/* Brand marquee for repeated category titles (Beauty 02+), ported from the
+   "Trusted by" band on siriai.co.kr. The track holds the brand list twice and
+   padding-right is kept equal to gap, so scrollWidth/2 lands exactly on the
+   start of the second copy — that is what makes the wrap seamless. Motion is
+   driven from JS (see TitleMarquee); the keyframes below are the no-JS path. */
+.title-marquee{
+  position:relative; display:flex; overflow:hidden;
+  margin-left:calc(-1 * var(--pad-x)); margin-right:calc(-1 * var(--pad-x));
+  -webkit-mask:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+  mask:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+}
+.title-marquee-track{
+  display:flex; align-items:center; flex-shrink:0; white-space:nowrap;
+  gap:clamp(30px,4vw,70px); padding-right:clamp(30px,4vw,70px);
+  animation:titleMarqueeFlow 84s linear infinite;
+}
+.title-marquee-track span{
+  font-family:var(--display); font-weight:600; line-height:1.1;
+  font-size:clamp(30px,3vw + 3vh,55px); letter-spacing:-.005em;
+  flex-shrink:0; cursor:default;
+  background-image:linear-gradient(90deg,rgba(245,245,245,.22),rgba(245,245,245,.22));
+  background-size:100% 100%; background-repeat:no-repeat;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+.title-marquee-track span:hover{
+  background-image:linear-gradient(100deg,#f4f4f3 0%,#f4f4f3 40%,#ffc70d 46%,#ff6b21 50%,#e62e61 54%,#f4f4f3 60%,#f4f4f3 100%);
+  background-size:250% 100%;
+  animation:titleMarqueeSweep 3.4s linear infinite;
+}
+@keyframes titleMarqueeFlow{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+@keyframes titleMarqueeSweep{ 0%{ background-position:100% 0; } 100%{ background-position:0 0; } }
+.cat-head-marquee{ display:block; }
+@media (max-width:720px){
+  .title-marquee{ margin-left:-22px; margin-right:-22px; }
+  .title-marquee-track span{ font-size:34px; }
+}
+/* Touch devices get no hover, so lift the resting fill to stay legible. */
+@media (hover:none){
+  .title-marquee-track span{ background-image:linear-gradient(90deg,rgba(244,244,243,.92),rgba(244,244,243,.92)); }
+}
+/* Static row rather than siriai's wrapped block: these pages are fixed-height
+   scroll-snap panels, so wrapping 19 brands would blow out the layout. */
+@media (prefers-reduced-motion:reduce){
+  .title-marquee-track{ animation:none; }
+  .title-marquee-track span:hover{ animation:none; background-image:linear-gradient(90deg,#f5f5f4,#f5f5f4); }
+}
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
