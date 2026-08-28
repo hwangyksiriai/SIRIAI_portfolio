@@ -5,10 +5,18 @@ import { useEffect, useRef, useState } from 'react';
 const BRAND_SYMBOL = '/media/brand/symbol.png';
 const BRAND_LOGO = '/media/brand/logo-white.png';
 
+/* 1x1 transparent GIF. Without a poster, mobile browsers paint their own grey
+   play-button placeholder until the first frame decodes; this hands them an
+   invisible one so the card background shows through instead. */
+const BLANK_POSTER =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
 function Clip({ src, landscape }) {
   const cls = 'clip' + (landscape ? ' landscape' : '') + (src ? '' : ' empty');
   const ref = useRef(null);
+  const videoRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!src || !ref.current) return;
@@ -26,10 +34,30 @@ function Clip({ src, landscape }) {
     return () => observer.disconnect();
   }, [src]);
 
+  // A cached video can reach HAVE_CURRENT_DATA before React attaches the
+  // handlers below, which would leave it faded out for good.
+  useEffect(() => {
+    if (visible && videoRef.current && videoRef.current.readyState >= 2) setReady(true);
+  }, [visible]);
+
   return (
     <div className={cls} ref={ref}>
       {src ? (
-        visible && <video className="fill" src={src} autoPlay muted loop playsInline />
+        visible && (
+          <video
+            ref={videoRef}
+            className={'fill' + (ready ? ' ready' : '')}
+            src={src}
+            poster={BLANK_POSTER}
+            preload="auto"
+            autoPlay
+            muted
+            loop
+            playsInline
+            onLoadedData={() => setReady(true)}
+            onCanPlay={() => setReady(true)}
+          />
+        )
       ) : (
         <span className="slot-msg"><span className="plus">+</span><span className="label">준비중</span></span>
       )}
