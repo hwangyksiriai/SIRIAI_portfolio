@@ -30,20 +30,6 @@
       ]
     },
     {
-      "id": "cat-beauty-2",
-      "navLabel": "Beauty",
-      "tag": "Reels",
-      "title": "Beauty",
-      "layout": "reel",
-      "hideFromNav": true,
-      "clips": [
-        "/media/beauty/beauty-clip-01.mp4",
-        "/media/beauty/beauty-clip-02.mp4",
-        "/media/beauty/beauty-clip-03.mp4",
-        "/media/beauty/beauty-clip-04.mp4"
-      ]
-    },
-    {
       "id": "cat-beauty-3",
       "navLabel": "Beauty",
       "tag": "Reels",
@@ -86,16 +72,17 @@
       ]
     },
     {
-      "id": "cat-living",
-      "navLabel": "Lifestyle",
+      "id": "cat-beauty-2",
+      "navLabel": "Beauty",
       "tag": "Reels",
-      "title": "Lifestyle",
+      "title": "Beauty",
       "layout": "reel",
+      "hideFromNav": true,
       "clips": [
-        "/media/living-personal-care/bodywash.mp4",
-        "/media/living-personal-care/kim-sehyun.mp4",
-        "/media/living-personal-care/yoon-yeongeun.mp4",
-        "/media/living-personal-care/diffuser-2.mp4"
+        "/media/beauty/beauty-clip-01.mp4",
+        "/media/beauty/beauty-clip-02.mp4",
+        "/media/beauty/beauty-clip-03.mp4",
+        "/media/beauty/beauty-clip-04.mp4"
       ]
     },
     {
@@ -125,6 +112,19 @@
             "/media/fashion/abroad/greencontinue-4.mp4"
           ]
         }
+      ]
+    },
+    {
+      "id": "cat-living",
+      "navLabel": "Lifestyle",
+      "tag": "Reels",
+      "title": "Lifestyle",
+      "layout": "reel",
+      "clips": [
+        "/media/living-personal-care/bodywash.mp4",
+        "/media/living-personal-care/kim-sehyun.mp4",
+        "/media/living-personal-care/yoon-yeongeun.mp4",
+        "/media/living-personal-care/diffuser-2.mp4"
       ]
     },
     {
