@@ -10,7 +10,8 @@ export default function AdminPage() {
   const [saving, setSaving] = useState(false);
   const [savedAt, setSavedAt] = useState(null);
   const [uploadingCount, setUploadingCount] = useState(0);
-  const dragIndex = useRef(null);
+  const [dragOverCatId, setDragOverCatId] = useState(null);
+  const dragSource = useRef(null);
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function AdminPage() {
   }
 
   function onDragStart(index) {
-    dragIndex.current = index;
+    dragSource.current = { catId: selectedId, regionKey: selectedRegionKey, index };
   }
 
   function onDragOver(e) {
@@ -72,13 +73,65 @@ export default function AdminPage() {
   }
 
   function onDrop(index) {
-    const from = dragIndex.current;
-    if (from === null || from === index) return;
-    const next = clips.slice();
-    const [moved] = next.splice(from, 1);
-    next.splice(index, 0, moved);
-    updateClips(next);
-    dragIndex.current = null;
+    const src = dragSource.current;
+    dragSource.current = null;
+    if (!src) return;
+    if (src.catId === selectedId && src.regionKey === selectedRegionKey) {
+      if (src.index === index) return;
+      const next = clips.slice();
+      const [moved] = next.splice(src.index, 1);
+      next.splice(index, 0, moved);
+      updateClips(next);
+    } else {
+      moveClipAcrossPages(src, { catId: selectedId, regionKey: selectedRegionKey, index });
+    }
+  }
+
+  function moveClipAcrossPages(src, dest) {
+    setConfig((prev) => {
+      const next = structuredClone(prev);
+      const srcCat = next.categories.find((c) => c.id === src.catId);
+      const srcHasRegions = Array.isArray(srcCat.regions) && srcCat.regions.length > 0;
+      const srcArr = srcHasRegions
+        ? srcCat.regions.find((r) => r.key === src.regionKey).clips
+        : srcCat.clips;
+      const [moved] = srcArr.splice(src.index, 1);
+
+      const destCat = next.categories.find((c) => c.id === dest.catId);
+      const destHasRegions = Array.isArray(destCat.regions) && destCat.regions.length > 0;
+      let destArr;
+      if (destHasRegions) {
+        const regionKey = dest.regionKey && destCat.regions.some((r) => r.key === dest.regionKey)
+          ? dest.regionKey
+          : destCat.regions[0].key;
+        destArr = destCat.regions.find((r) => r.key === regionKey).clips;
+      } else {
+        destArr = destCat.clips || (destCat.clips = []);
+      }
+      if (dest.index != null) {
+        destArr.splice(dest.index, 0, moved);
+      } else {
+        destArr.push(moved);
+      }
+      return next;
+    });
+  }
+
+  function onSidebarDragOver(e, catId) {
+    e.preventDefault();
+    if (dragSource.current && dragSource.current.catId !== catId) setDragOverCatId(catId);
+  }
+
+  function onSidebarDragLeave(catId) {
+    setDragOverCatId((cur) => (cur === catId ? null : cur));
+  }
+
+  function onSidebarDrop(catId) {
+    const src = dragSource.current;
+    dragSource.current = null;
+    setDragOverCatId(null);
+    if (!src || src.catId === catId) return;
+    moveClipAcrossPages(src, { catId, regionKey: null, index: null });
   }
 
   async function onFilesSelected(e) {
@@ -127,18 +180,23 @@ export default function AdminPage() {
     <div style={styles.wrap}>
       <aside style={styles.sidebar}>
         <div style={styles.sidebarHeader}>SIRIAI Admin</div>
-        {config.categories.map((cat) => (
+        {config.categories.map((cat, i) => (
           <button
             key={cat.id}
             onClick={() => {
               setSelectedId(cat.id);
               setSelectedRegionKey(cat.regions ? cat.regions[0].key : null);
             }}
+            onDragOver={(e) => onSidebarDragOver(e, cat.id)}
+            onDragLeave={() => onSidebarDragLeave(cat.id)}
+            onDrop={() => onSidebarDrop(cat.id)}
             style={{
               ...styles.navItem,
               ...(cat.id === selectedId ? styles.navItemActive : {}),
+              ...(cat.id === dragOverCatId ? styles.navItemDragOver : {}),
             }}
           >
+            <span style={styles.navItemIdx}>{String(i + 1).padStart(2, '0')}</span>
             {cat.navLabel}
           </button>
         ))}
@@ -178,7 +236,7 @@ export default function AdminPage() {
           </div>
         )}
 
-        <p style={styles.hint}>카드를 드래그해서 순서를 바꾸세요. 영상을 추가하려면 아래 버튼을 누르세요.</p>
+        <p style={styles.hint}>카드를 드래그해서 순서를 바꾸세요. 왼쪽 페이지 목록으로 드래그하면 해당 페이지로 영상이 이동합니다. 영상을 추가하려면 아래 버튼을 누르세요.</p>
 
         <div style={styles.clipGrid}>
           {clips.map((src, i) => (
@@ -223,8 +281,10 @@ const styles = {
   wrap: { display: 'flex', minHeight: '100vh', background: '#0a0908', color: '#f2ede4', fontFamily: 'system-ui, sans-serif' },
   sidebar: { width: 220, borderRight: '1px solid #262019', display: 'flex', flexDirection: 'column', padding: 16, gap: 4 },
   sidebarHeader: { fontWeight: 700, fontSize: 15, marginBottom: 12 },
-  navItem: { textAlign: 'left', background: 'transparent', border: 'none', color: '#948e82', padding: '8px 10px', borderRadius: 8, cursor: 'pointer', fontSize: 13 },
+  navItem: { display: 'flex', alignItems: 'center', gap: 8, textAlign: 'left', background: 'transparent', border: '1px solid transparent', color: '#948e82', padding: '8px 10px', borderRadius: 8, cursor: 'pointer', fontSize: 13 },
   navItemActive: { background: '#15130f', color: '#f2ede4' },
+  navItemDragOver: { borderColor: '#c98a3f', background: 'rgba(201,138,63,.14)', color: '#f2ede4' },
+  navItemIdx: { fontSize: 11, color: '#c98a3f', fontVariantNumeric: 'tabular-nums' },
   logoutBtn: { background: 'transparent', border: '1px solid #262019', color: '#948e82', padding: '8px 10px', borderRadius: 8, cursor: 'pointer', fontSize: 12 },
   main: { flex: 1, padding: 28, overflowY: 'auto' },
   topBar: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, gap: 16 },
