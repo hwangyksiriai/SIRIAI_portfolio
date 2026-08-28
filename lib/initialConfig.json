@@ -142,6 +142,24 @@
       ]
     },
     {
+      "id": "cat-fashion-2",
+      "navLabel": "Fashion",
+      "tag": "Reels",
+      "title": "Fashion",
+      "layout": "reel",
+      "hideFromNav": true,
+      "clips": []
+    },
+    {
+      "id": "cat-fashion-3",
+      "navLabel": "Fashion",
+      "tag": "Reels",
+      "title": "Fashion",
+      "layout": "reel",
+      "hideFromNav": true,
+      "clips": []
+    },
+    {
       "id": "cat-living",
       "navLabel": "Lifestyle",
       "tag": "Reels",
