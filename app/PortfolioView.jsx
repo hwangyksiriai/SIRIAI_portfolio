@@ -37,13 +37,32 @@ function Clip({ src, landscape }) {
   );
 }
 
-/* Brand names shown in place of the repeated "Beauty" headings. */
-const BEAUTY_MARQUEE_BRANDS = [
-  'Oddtype', 'INNISFREE', 'COSRX', 'TOCOBO', 'Musinsa standard beauty',
-  'Quadthera', 'forhz', 'OFFLOW', 'KEEPINTOUCH', 'Ohayoh', 'No The Love',
-  'Lusom', 'Yadah', 'Pretty Actually', 'if:fu', 'Keybo', 'Skinsignal',
-  'wizzy', 'Finv',
-];
+/* Brands shown in place of a category's repeated headings, keyed by the id of
+   the category's first page. Adding an entry here is all it takes to give
+   another category's continuation pages the band.
+
+   One list must render wider than the page (max 2400px) on its own: the track
+   holds exactly two copies, so at the wrap point a set narrower than the page
+   would leave a visible gap on the right. Fashion's eight names are the
+   shortest list and still measure ~2860px, so there is room to spare. */
+const MARQUEE_BRANDS = {
+  'cat-beauty': [
+    'Oddtype', 'INNISFREE', 'COSRX', 'TOCOBO', 'Musinsa standard beauty',
+    'Quadthera', 'forhz', 'OFFLOW', 'KEEPINTOUCH', 'Ohayoh', 'No The Love',
+    'Lusom', 'Yadah', 'Pretty Actually', 'if:fu', 'Keybo', 'Skinsignal',
+    'wizzy', 'Finv',
+  ],
+  'cat-fashion': [
+    '8division', 'INNIR', 'OJOS', 'toomuchtax', 'BLUE SUNSET',
+    'THE CACTUS HOTEL', 'Lumiere Blanche', 'Velvaskin',
+  ],
+};
+
+/* Continuation pages are "<first page id>-<n>", e.g. cat-fashion-2. */
+function marqueeBrandsFor(id) {
+  const m = /^(.*)-\d+$/.exec(id);
+  return m ? MARQUEE_BRANDS[m[1]] : undefined;
+}
 
 const MARQUEE_SPEED = 92; // px/sec, matching the siriai.co.kr band
 
@@ -165,7 +184,8 @@ function CategorySection({ cat, idx }) {
     : (cat.clips || []);
   // The continuation pages repeat their parent's title, so they run the brand
   // band instead; the first page of the category still names itself.
-  const marquee = /^cat-beauty-\d+$/.test(cat.id);
+  const marqueeBrands = marqueeBrandsFor(cat.id);
+  const marquee = !!marqueeBrands;
 
   return (
     <section className="page" id={cat.id}>
@@ -174,7 +194,7 @@ function CategorySection({ cat, idx }) {
         {marquee ? (
           <>
             <h1 className="disp sr-only">{cat.title}</h1>
-            <TitleMarquee items={BEAUTY_MARQUEE_BRANDS} />
+            <TitleMarquee items={marqueeBrands} />
           </>
         ) : (
           <h1 className="disp">{cat.title}</h1>
